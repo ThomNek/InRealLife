@@ -1,0 +1,482 @@
+TREASURE IRL - LÝ THUYẾT SẢN PHẨM, TÍNH NĂNG VÀ ĐÁNH GIÁ KHẢ THI
+Ngày lập: 24/08/2026
+
+======================================================================
+1. TUYÊN BỐ SẢN PHẨM
+======================================================================
+
+Treasure IRL là một nền tảng xã hội dựa trên hoạt động ngoài đời thật.
+Ứng dụng dùng săn kho báu, câu đố, đội nhóm và bộ sưu tập để giúp người
+dùng khám phá địa điểm, thể hiện năng lực thật và tạo quan hệ xã hội thật.
+
+Ứng dụng không nên trở thành “Facebook có thêm trò săn kho báu”.
+Mọi tính năng phải trả lời được câu hỏi:
+
+  Tính năng này giúp người dùng rời màn hình và hành động ngoài đời,
+  hay chỉ khiến họ tiếp tục nhìn màn hình?
+
+Giá trị cốt lõi:
+
+- Kết nối đời thực thay vì tích lũy tương tác ảo.
+- Thành tích đến từ hành động đã được xác minh.
+- Cho người dùng thể hiện cá tính và nhiều loại tài năng khác nhau.
+- Khuyến khích hợp tác, khám phá và hỗ trợ cộng đồng.
+- Ưu tiên địa điểm công cộng, quyền riêng tư và an toàn.
+
+======================================================================
+2. GIẢ THUYẾT SẢN PHẨM CẦN KIỂM CHỨNG
+======================================================================
+
+Đây là các giả thuyết cần thử nghiệm với người dùng thật, không nên coi là
+kết luận chắc chắn ngay từ đầu:
+
+H1. Một nhiệm vụ có mục tiêu rõ ràng và diễn ra gần người dùng sẽ làm họ
+sẵn sàng ra ngoài hơn một lời mời kết bạn thông thường.
+
+H2. Hợp tác giải câu đố tạo lý do giao tiếp tự nhiên hơn một phòng chat
+không có mục tiêu.
+
+H3. Hồ sơ thể hiện thành tích đã xác minh sẽ có ý nghĩa hơn số lượt thích.
+
+H4. Săn cá nhân là bước vào phù hợp cho người ngại gặp người lạ; sau khi
+tin tưởng sản phẩm, một phần trong số họ sẽ tham gia đội.
+
+H5. Mảnh ghép còn thiếu và trao đổi trực tiếp có thể tạo kết nối, nhưng chỉ
+hiệu quả nếu việc trao đổi công bằng, an toàn và không mang tính ép buộc.
+
+H6. Nội dung theo khu vực và có thời hạn hữu ích hơn bảng tin vô hạn.
+
+======================================================================
+3. CÁC LÝ THUYẾT THIẾT KẾ PHÙ HỢP
+======================================================================
+
+3.1. Self-Determination Theory - Động lực tự thân
+
+Sản phẩm nên hỗ trợ ba nhu cầu:
+
+- Autonomy: người chơi chọn săn cá nhân, theo đội, độ khó và thời gian.
+- Competence: người chơi thấy kỹ năng tiến bộ qua thử thách vừa sức.
+- Relatedness: người chơi cảm thấy thuộc về một đội hoặc cộng đồng địa phương.
+
+3.2. Flow - Trạng thái cuốn hút lành mạnh
+
+Độ khó phải tương ứng kỹ năng. Quá dễ sẽ chán, quá khó sẽ bỏ cuộc.
+Nên có gợi ý theo cấp độ và nhiều vai trò trong một nhiệm vụ.
+
+3.3. Meaningful Gamification - Trò chơi hóa có ý nghĩa
+
+Điểm, level và huy hiệu chỉ có giá trị khi phản ánh hành động thật:
+
+- Hoàn thành thử thách tại địa điểm.
+- Giúp đội giải quyết vấn đề.
+- Hỗ trợ người mới.
+- Tạo nội dung cộng đồng chất lượng.
+- Tuân thủ quy tắc an toàn.
+
+Không nên thưởng lớn chỉ vì mở app, đăng bài hoặc lướt nội dung.
+
+3.4. Social Facilitation và Cooperative Goals
+
+Nhiệm vụ nên tạo mục tiêu chung mà một người khó hoàn thành một mình.
+Mỗi thành viên có thể đóng góp theo năng lực khác nhau: quan sát, định
+hướng, giải mã, ghi chép, giao tiếp hoặc vận động.
+
+3.5. Place Attachment - Gắn bó với địa điểm
+
+Kho báu cần làm người chơi hiểu thêm về công viên, bảo tàng, thư viện,
+kiến trúc và văn hóa địa phương; không chỉ dùng GPS làm ổ khóa.
+
+3.6. Reputation có ngữ cảnh
+
+Không dùng một điểm nổi tiếng duy nhất. Nên có uy tín theo hành vi:
+
+- Phối hợp đội.
+- Đúng giờ.
+- Hỗ trợ người mới.
+- Giải mật mã.
+- Tạo cuộc săn chất lượng.
+- Giao dịch an toàn.
+
+======================================================================
+4. VÒNG LẶP CỐT LÕI
+======================================================================
+
+  Khám phá hoạt động gần mình
+       -> Chọn săn cá nhân hoặc tìm đội
+       -> Chuẩn bị và chọn điểm hẹn công cộng
+       -> Thực hiện thử thách ngoài đời
+       -> Xác minh kết quả
+       -> Nhận vật phẩm/thành tích
+       -> Ghi lại hành trình ngắn
+       -> Tìm thử thách tiếp theo hoặc hỗ trợ người khác
+
+Thời gian sử dụng app nên tập trung vào chuẩn bị, điều hướng tối thiểu và
+xác nhận. Phần lớn thời gian trải nghiệm nên diễn ra ngoài màn hình.
+
+======================================================================
+5. TÍNH NĂNG BẮT BUỘC CHO MVP
+======================================================================
+
+P0 - Cần có trước thử nghiệm người dùng thật:
+
+1. Auth
+   - Đăng ký, đăng nhập, đăng xuất, khôi phục mật khẩu.
+   - Phiên đăng nhập được giữ an toàn.
+
+2. Hồ sơ
+   - Tên, avatar, giới thiệu, thành phố, sở thích.
+   - Chế độ công khai/bạn bè/riêng tư.
+   - Thành tích đã xác minh và lịch sử cuộc săn.
+
+3. Danh mục cuộc săn
+   - Tên, mô tả, độ khó, thời lượng, địa điểm chung.
+   - Điều kiện tham gia, số người, trạng thái hoạt động.
+
+4. Săn cá nhân
+   - Tham gia, bắt đầu, xem bước hiện tại, nhập đáp án.
+   - Lưu tiến trình và hoàn thành.
+   - Gợi ý có giới hạn.
+
+5. Xác minh cơ bản
+   - Đáp án do server kiểm tra.
+   - Check-in khu vực với sai số hợp lý.
+   - Không công khai vị trí chính xác của người dùng.
+
+6. Bài đăng có mục đích
+   - Tìm đội, chia sẻ manh mối, đổi mảnh, thành tích.
+   - Bài tìm đội và điểm hẹn có thời hạn.
+   - Báo cáo và ẩn nội dung.
+
+7. An toàn
+   - Chỉ gợi ý gặp tại địa điểm công cộng.
+   - Chặn người dùng, báo cáo, rời đội.
+   - Không hiển thị vị trí thời gian thực cho người lạ.
+   - Điều khoản và hướng dẫn an toàn rõ ràng.
+
+P1 - Thêm sau khi vòng lặp săn cá nhân hoạt động:
+
+8. Đội săn
+   - Tạo đội, xin tham gia, lời mời, vai trò, giới hạn thành viên.
+
+9. Chat theo mục tiêu
+   - Chat trực tiếp và chat đội.
+   - Gửi điểm hẹn công cộng, thời gian và trạng thái tham gia.
+   - Không cần các cơ chế gây nghiện như streak chat.
+
+10. Kho vật phẩm
+    - Bộ mảnh, độ hiếm, số lượng, nguồn nhận và trạng thái khóa.
+
+11. Chợ mảnh ghép
+    - Đề nghị đổi, chấp nhận, từ chối và xác nhận hai phía.
+    - Nhật ký giao dịch để xử lý tranh chấp.
+
+P2 - Chỉ xây sau khi có người dùng quay lại:
+
+12. Mùa và sự kiện giới hạn.
+13. Câu đố biến thể theo người/ngày.
+14. Kho báu do cộng đồng tạo và quy trình kiểm duyệt.
+15. Bảng xếp hạng theo khu vực hoặc kỹ năng.
+16. Quan hệ đối tác với thư viện, bảo tàng, trường học và doanh nghiệp.
+
+======================================================================
+6. THỂ HIỆN CÁ TÍNH VÀ TÀI NĂNG
+======================================================================
+
+Hồ sơ không chỉ cho biết người chơi muốn được nhìn nhận thế nào, mà ghi lại
+những gì họ đã thật sự làm được.
+
+Thông tin nên thể hiện:
+
+- Kho báu hiếm nhất đã hoàn thành.
+- Độ khó cao nhất.
+- Hoàn thành có/không dùng gợi ý.
+- Tỷ lệ người chơi hoàn thành cùng thử thách.
+- Vai trò và kỹ năng nổi bật.
+- Thành tích hợp tác và hỗ trợ cộng đồng.
+- Địa điểm/khu vực đã khám phá, ở mức không xâm phạm riêng tư.
+
+Không chỉ tôn vinh tốc độ. Các hướng phát triển nhân vật:
+
+- Nhà giải mã.
+- Người quan sát.
+- Người dẫn đường.
+- Người kết nối đội.
+- Nhà sưu tầm.
+- Người hỗ trợ tân binh.
+- Nhà kể chuyện hoặc nhiếp ảnh gia hành trình.
+
+======================================================================
+7. GIẢI QUYẾT NỘI DUNG HỮU HẠN
+======================================================================
+
+Kho báu cố định chắc chắn sẽ bị khám phá hết và đáp án sẽ bị chia sẻ.
+Giải pháp không phải chỉ tăng độ khó:
+
+- Chia nội dung theo mùa 1-3 tháng.
+- Dùng mẫu câu đố và sinh biến thể có kiểm soát.
+- Thay đổi thứ tự bước và mảnh yêu cầu.
+- Nhiệm vụ hằng ngày/hằng tuần dựa trên khu vực.
+- Tái sử dụng địa điểm với câu chuyện và thử thách mới.
+- Cho mảnh trùng công dụng: đổi, phân rã, chế tạo, mở gợi ý.
+- Cho cộng đồng tạo cuộc săn sau khi có kiểm duyệt.
+
+Thiết kế dữ liệu nên tách:
+
+  treasure_templates -> treasure_instances -> user_hunts
+
+Nhờ vậy một mẫu có thể sinh nhiều lần chơi mà không sao chép toàn bộ nội dung.
+
+======================================================================
+8. AN TOÀN, QUYỀN RIÊNG TƯ VÀ CHỐNG GIAN LẬN
+======================================================================
+
+Đây là phần quyết định sản phẩm có thể vận hành thật hay không.
+
+- Không để người lạ biết vị trí chính xác hoặc lộ trình lịch sử.
+- Làm mờ khoảng cách và chỉ hiện khu vực trước khi hai bên đồng ý.
+- Điểm hẹn phải là nơi công cộng và có khung giờ phù hợp.
+- Người dưới tuổi quy định cần cơ chế riêng hoặc không được ghép người lạ.
+- Có chặn, báo cáo, bằng chứng và quy trình xử lý.
+- Không đặt kho báu tại khu vực nguy hiểm, riêng tư hoặc cấm tiếp cận.
+- Không khuyến khích nhìn điện thoại khi qua đường hoặc di chuyển.
+- GPS chỉ là một tín hiệu; có thể kết hợp QR, mã địa điểm và xác nhận đội.
+- Phần thưởng hiếm phải được cấp bởi server, không tin dữ liệu từ client.
+- Cần giới hạn tốc độ thử đáp án và phát hiện vị trí bất thường.
+
+======================================================================
+9. CẤU TRÚC SUPABASE ĐỀ XUẤT
+======================================================================
+
+Giai đoạn đầu:
+
+- auth.users
+- profiles
+- interests
+- user_interests
+- posts
+- post_media
+- post_likes
+- post_comments
+- friendships
+- hunts
+- hunt_steps
+- user_hunts
+- user_hunt_progress
+
+Đội và chat:
+
+- teams
+- team_members
+- team_invitations
+- conversations
+- conversation_members
+- messages
+
+Vật phẩm:
+
+- treasure_sets
+- pieces
+- user_pieces
+- trade_offers
+- trade_offer_items
+- trade_transactions
+
+Vận hành và an toàn:
+
+- reports
+- blocked_users
+- check_ins
+- moderation_actions
+- notifications
+
+Nguyên tắc:
+
+- profiles.id tham chiếu auth.users.id.
+- Bật Row Level Security cho mọi bảng dữ liệu người dùng.
+- Không đặt service-role key trong Flutter hoặc Next.js client.
+- Ảnh để trong Supabase Storage; database chỉ lưu đường dẫn và metadata.
+- Migration SQL phải được lưu trong Git, không chỉ thao tác bằng Dashboard.
+
+======================================================================
+10. TÌNH TRẠNG HIỆN TẠI CỦA DỰ ÁN
+======================================================================
+
+Flutter đã có giao diện/mô phỏng:
+
+- Home responsive.
+- Đăng ký và đăng nhập.
+- Hồ sơ và chỉnh sửa hồ sơ.
+- Radar.
+- Kho vật phẩm và chợ mảnh ghép.
+- Tạo bài dạng modal.
+- Danh sách bạn bè và chat mô phỏng.
+
+Next.js đã có thêm tham chiếu:
+
+- Chi tiết cuộc săn Kho báu Hoàng Hôn.
+- Đội Tree Keepers.
+- Hồ sơ và chỉnh sửa hồ sơ.
+- Kho vật phẩm.
+- Tạo bài.
+
+Chưa có ở mức sản phẩm thật:
+
+- State đăng nhập toàn cục.
+- Kết nối Supabase.
+- Model/repository/service trong Flutter.
+- Dữ liệu bài đăng thật.
+- Upload ảnh thật.
+- Cuộc săn cá nhân hoàn chỉnh.
+- Xác minh GPS/QR/đáp án.
+- Chat Realtime thật.
+- RLS và kiểm duyệt.
+- Logic giao dịch an toàn.
+
+Kết luận kỹ thuật: giao diện đã đủ để bắt đầu database, nhưng chưa đủ để
+thử nghiệm công khai với người dùng thật.
+
+======================================================================
+11. ĐÁNH GIÁ TÍNH SÁNG TẠO
+======================================================================
+
+Ý tưởng có tính sáng tạo ở cách kết hợp:
+
+- Mạng xã hội địa phương.
+- Săn kho báu ngoài đời.
+- Hồ sơ năng lực được xác minh.
+- Ghép đội và trao đổi mảnh vật lý/ảo.
+- Mục tiêu giảm tương tác xã hội chỉ tồn tại trên màn hình.
+
+Từng thành phần riêng lẻ không hoàn toàn mới: geocaching, game theo vị trí,
+mạng xã hội và sưu tập vật phẩm đều đã tồn tại. Sự khác biệt phải đến từ
+việc tích hợp chúng thành một vòng lặp thật sự đưa người dùng ra ngoài.
+
+Nếu sản phẩm chỉ có feed, like, chat và bản đồ trang trí thì không đủ khác biệt.
+Nếu thành tích được xác minh, nhiệm vụ gắn với địa điểm và gặp gỡ an toàn là
+trung tâm, dự án có bản sắc rõ ràng.
+
+Đánh giá hiện tại:
+
+- Ý tưởng/bản sắc: tốt.
+- Khác biệt tiềm năng: tốt, nhưng phụ thuộc thực thi.
+- Giao diện prototype: đủ để trình bày hướng đi.
+- Công nghệ: khả thi với Flutter + Supabase.
+- Rủi ro lớn nhất: nội dung địa phương, an toàn và đạt mật độ người dùng.
+
+======================================================================
+12. ĐÁNH GIÁ TÍNH THỰC TẾ
+======================================================================
+
+Dự án thực tế nếu bắt đầu nhỏ:
+
+- Một thành phố hoặc một trường đại học.
+- 3-5 địa điểm công cộng.
+- 1 cuộc săn chính và vài nhiệm vụ ngắn.
+- Săn cá nhân trước, ghép đội là tùy chọn.
+- 20-50 người dùng thử nghiệm có quan sát.
+
+Dự án không thực tế nếu ngay từ đầu cố triển khai toàn quốc, Realtime chat,
+thị trường lớn, hàng trăm cuộc săn và kiểm duyệt cộng đồng cùng lúc.
+
+Rủi ro cold start:
+
+- Ít người trong cùng khu vực làm tính năng tìm đội/chợ trở nên trống.
+- Giải pháp: sự kiện theo lịch, nhóm thử nghiệm tập trung, săn cá nhân và bot
+  dữ liệu demo được ghi rõ thay vì giả làm người dùng thật.
+
+Rủi ro vận hành:
+
+- Mỗi địa điểm thay đổi có thể làm câu đố sai.
+- Cần người quản lý nội dung, ngày kiểm tra cuối và nút báo địa điểm không còn hợp lệ.
+
+Rủi ro kinh doanh:
+
+- Người dùng có thể thích trải nghiệm nhưng không dùng thường xuyên.
+- Có thể hợp tác B2B với trường học, bảo tàng, du lịch, sự kiện và doanh nghiệp;
+  không nên phụ thuộc hoàn toàn vào quảng cáo hoặc bán vật phẩm gây mất cân bằng.
+
+======================================================================
+13. CHỈ SỐ THÀNH CÔNG
+======================================================================
+
+Không lấy thời gian trong app làm mục tiêu chính.
+
+North Star Metric đề xuất:
+
+  Số cuộc săn ngoài đời được xác minh hoàn thành mỗi tuần.
+
+Các chỉ số hỗ trợ:
+
+- Tỷ lệ xem cuộc săn -> bắt đầu.
+- Tỷ lệ bắt đầu -> hoàn thành.
+- Số đội thực sự check-in cùng nhau.
+- Tỷ lệ người mới hoàn thành cuộc săn đầu tiên.
+- Tỷ lệ quay lại tham gia cuộc săn khác trong 30 ngày.
+- Số lần hỗ trợ đồng đội được xác nhận.
+- Tỷ lệ báo cáo an toàn và thời gian xử lý.
+- Thời gian màn hình trong lúc cuộc săn đang diễn ra (càng thấp hợp lý càng tốt).
+
+Không nên tối ưu chính cho:
+
+- Số lượt cuộn feed.
+- Số thông báo được gửi.
+- Số bài đăng không tạo hành động ngoài đời.
+- Thời gian online càng lâu càng tốt.
+
+======================================================================
+14. LỘ TRÌNH ĐỀ XUẤT
+======================================================================
+
+Mốc 1 - Nền tảng thật:
+
+1. Supabase Auth + profiles + RLS.
+2. Đăng ký/đăng nhập/đăng xuất thật.
+3. Hồ sơ xem và chỉnh sửa thật.
+4. Posts và upload ảnh thật.
+
+Mốc 2 - Vòng lặp cốt lõi:
+
+5. Trang danh sách và chi tiết cuộc săn.
+6. Săn cá nhân, bước chơi và lưu tiến trình.
+7. Xác minh đáp án và check-in an toàn.
+8. Cấp EXP/vật phẩm từ server sau khi hoàn thành.
+
+Mốc 3 - Kết nối xã hội:
+
+9. Tạo đội, tham gia và lời mời.
+10. Chat đội và chat trực tiếp có RLS.
+11. Đánh giá đồng đội chỉ sau hoạt động thật.
+
+Mốc 4 - Kinh tế và nội dung sống:
+
+12. Kho vật phẩm thật.
+13. Đề nghị trao đổi và xác nhận hai phía.
+14. Mùa, biến thể câu đố và công cụ quản trị nội dung.
+
+======================================================================
+15. QUYẾT ĐỊNH NÊN LÀM NGAY
+======================================================================
+
+Không nên tiếp tục tạo nhiều màn hình mock trước khi backend hoạt động.
+Bước tiếp theo hợp lý nhất là:
+
+1. Chốt schema Auth và profiles.
+2. Tạo Supabase migrations và RLS.
+3. Kết nối đăng ký/đăng nhập Flutter.
+4. Kết nối hồ sơ xem/chỉnh sửa.
+5. Sau đó kết nối posts.
+
+Khi ba luồng Auth -> Profile -> Post chạy với dữ liệu thật, tiếp tục xây
+Săn cá nhân. Đây là chức năng chứng minh giá trị cốt lõi của Treasure IRL.
+
+======================================================================
+KẾT LUẬN
+======================================================================
+
+Treasure IRL có ý tưởng đủ sáng tạo và có thể xây dựng thực tế. Giá trị của
+dự án không nằm ở số lượng màn hình, mà ở khả năng biến tương tác trong app
+thành khám phá, hợp tác và thành tích ngoài đời đã được xác minh.
+
+MVP nên nhỏ, tập trung một khu vực, ưu tiên săn cá nhân và an toàn. Supabase
+phù hợp cho giai đoạn đầu, nhưng RLS, xác minh từ server và thiết kế quyền
+riêng tư phải được xây từ đầu, không bổ sung sau.

@@ -1,0 +1,872 @@
+TREASURE IRL - ĐẶC TẢ SẢN PHẨM, TÍNH NĂNG VÀ LUỒNG GIAO DIỆN
+Phiên bản định hướng: 1.0
+Ngày cập nhật: 24/08/2026
+
+======================================================================
+1. TÊN VÀ ĐỊNH VỊ SẢN PHẨM
+======================================================================
+
+Tên: Treasure IRL
+
+Định vị ngắn:
+
+  Treasure IRL là mạng xã hội hoạt động ngoài đời, nơi người dùng tìm
+  những người phù hợp thông qua các hoạt động có mục tiêu như săn kho báu,
+  đi bộ khám phá, thể thao, cà phê câu đố và sự kiện cộng đồng.
+
+Thông điệp:
+
+  Kết nối qua điều cùng làm, không chỉ qua điều cùng đăng.
+
+Treasure IRL không ghép hai người lạ rồi yêu cầu họ tự tìm chủ đề nói chuyện.
+Ứng dụng đưa người dùng vào một hoạt động rõ ràng, an toàn và có mục tiêu.
+Tình bạn được hình thành như kết quả của trải nghiệm chung.
+
+======================================================================
+2. VẤN ĐỀ CẦN GIẢI QUYẾT
+======================================================================
+
+- Người dùng dành nhiều thời gian trên mạng nhưng ít kết nối đời thực.
+- Hồ sơ và bài đăng không tạo đủ niềm tin để gặp một người lạ.
+- Các ứng dụng kết bạn thường có bước nhảy quá lớn:
+
+    xem hồ sơ -> chat -> gặp riêng một người lạ
+
+- Nhiều người muốn tham gia thể thao hoặc hoạt động ngoài trời nhưng:
+  + Không có bạn đi cùng.
+  + Không biết tìm nhóm phù hợp ở đâu.
+  + Lo khác biệt trình độ hoặc tính cách.
+  + Lo an toàn khi gặp người lạ.
+  + Không biết nói gì trong lần gặp đầu tiên.
+
+Treasure IRL giải quyết bằng cách ghép người vào hoạt động, không chỉ ghép
+người với người.
+
+======================================================================
+3. MỤC TIÊU SẢN PHẨM
+======================================================================
+
+Mục tiêu chính:
+
+- Tăng số cuộc gặp và hoạt động có ý nghĩa ngoài đời thật.
+- Giảm phụ thuộc vào tương tác ảo và bảng tin vô hạn.
+- Giúp người dùng tìm nhóm phù hợp theo sở thích, lịch rảnh, khoảng cách,
+  trình độ và mức năng lượng xã hội.
+- Cho phép người dùng thể hiện cá tính và tài năng bằng thành tích thật.
+- Tạo môi trường gặp gỡ có cấu trúc, công khai và an toàn.
+
+Mục tiêu không theo đuổi:
+
+- Giữ người dùng trong app càng lâu càng tốt.
+- Tối đa hóa số lượt cuộn, số thông báo hoặc số bài đăng.
+- Tạo cạnh tranh bằng tiền hoặc vật phẩm pay-to-win.
+- Trở thành ứng dụng hẹn hò trá hình.
+
+Chỉ số trung tâm:
+
+  Số hoạt động ngoài đời được xác minh hoàn thành mỗi tuần.
+
+======================================================================
+4. LÝ THUYẾT SẢN PHẨM
+======================================================================
+
+4.1. Ghép theo hoạt động thay vì ghép người lạ
+
+Thông điệp không phải:
+
+  “Bạn có muốn gặp Nam không?”
+
+Mà là:
+
+  “Chiều thứ Bảy có nhóm bốn người chơi cầu lông tại sân A.
+   Nhóm còn thiếu một người mới bắt đầu.”
+
+Hoạt động tạo lý do gặp, chủ đề trò chuyện và giới hạn thời gian rõ ràng.
+
+4.2. Self-Determination Theory
+
+- Tự chủ: chọn loại hoạt động, thời gian, chế độ cá nhân/nhóm.
+- Năng lực: thử thách vừa sức và thể hiện kỹ năng tiến bộ.
+- Gắn kết: cùng đội hoàn thành một mục tiêu có ý nghĩa.
+
+4.3. Flow
+
+Độ khó phải phù hợp trình độ. Mỗi hoạt động cần:
+
+- Mục tiêu rõ.
+- Phản hồi rõ.
+- Thử thách vừa đủ.
+- Gợi ý khi bế tắc.
+- Nhiều vai trò để các kiểu tài năng đều có ích.
+
+4.4. Meaningful Gamification
+
+Level, EXP, huy hiệu và vật phẩm chỉ được cấp từ hành động thật:
+
+- Check-in tại hoạt động.
+- Hoàn thành nhiệm vụ.
+- Hợp tác với đội.
+- Hỗ trợ người mới.
+- Tổ chức hoạt động được đánh giá tốt.
+
+Không thưởng lớn chỉ vì đăng nhập, lướt feed hoặc đăng bài liên tục.
+
+4.5. Xây niềm tin theo từng tầng
+
+  Tầng 1: thấy hoạt động phù hợp gần mình
+  Tầng 2: xem thông tin nhóm và người tổ chức
+  Tầng 3: xem hồ sơ/thành tích đã xác minh
+  Tầng 4: đăng ký tham gia
+  Tầng 5: chat giới hạn để xác nhận thời gian, điểm hẹn
+  Tầng 6: gặp tại địa điểm công cộng
+  Tầng 7: sau hoạt động mới tự nguyện kết bạn
+
+4.6. Thể hiện cá tính bằng hành động
+
+Hồ sơ không chỉ nói “tôi là ai”, mà chứng minh “tôi đã làm được gì”.
+
+Ví dụ kỹ năng:
+
+- Giải mật mã.
+- Quan sát.
+- Định hướng.
+- Phối hợp đội.
+- Sức bền.
+- Hỗ trợ người mới.
+- Kể chuyện/chụp ảnh hành trình.
+- Tổ chức cộng đồng.
+
+======================================================================
+5. CÁC LOẠI HOẠT ĐỘNG
+======================================================================
+
+5.1. Săn kho báu
+
+- Giải manh mối tại địa điểm thật.
+- Săn cá nhân hoặc theo đội.
+- Check-in từng chặng.
+- Nhận EXP, huy hiệu và mảnh ghép.
+
+5.2. Đi bộ khám phá
+
+- Tuyến đường công cộng an toàn.
+- Tìm chi tiết kiến trúc, cây xanh hoặc lịch sử địa phương.
+- Chụp ảnh/check-in và giải câu đố ngắn.
+
+5.3. Chạy bộ săn dấu mốc
+
+- Chạy qua nhiều trạm.
+- Mỗi trạm nhận một ký tự hoặc manh mối.
+- Ghép mã tại đích để mở kho báu.
+
+5.4. Cầu lông hoặc thể thao nhóm nhỏ
+
+- Ghép theo trình độ, thời gian và khoảng cách.
+- Mục tiêu hợp tác thay vì chỉ thắng thua.
+- Ví dụ: rally 20 lần, đổi cặp, hoàn thành bài tập kỹ thuật.
+
+5.5. Cà phê câu đố
+
+- Nhóm 3-6 người tại quán/địa điểm đối tác.
+- Mỗi người giữ một phần dữ kiện.
+- Phải giao tiếp để giải câu đố chung.
+
+5.6. Board game và hoạt động cộng đồng
+
+- Có người tổ chức, số chỗ, trình độ và thời lượng rõ ràng.
+- Kho báu/huy hiệu là lớp trò chơi hóa tùy chọn.
+
+Trong MVP chỉ nên triển khai:
+
+1. Săn kho báu/đi bộ khám phá.
+2. Một loại thể thao đơn giản như cầu lông hoặc chạy bộ.
+
+======================================================================
+6. VÒNG LẶP SỬ DỤNG CHÍNH
+======================================================================
+
+Luồng tổng quát:
+
+  Mở app
+    -> xem hoạt động gần mình
+    -> lọc theo sở thích/thời gian/trình độ
+    -> xem chi tiết hoạt động
+    -> chọn săn cá nhân hoặc tham gia nhóm
+    -> xác nhận quy tắc an toàn
+    -> chat ngắn để thống nhất
+    -> check-in tại địa điểm công cộng
+    -> hoàn thành thử thách ngoài đời
+    -> xác minh kết quả
+    -> nhận thành tích/vật phẩm
+    -> đánh giá trải nghiệm
+    -> tự nguyện kết bạn hoặc tham gia hoạt động khác
+
+Nguyên tắc:
+
+- App hỗ trợ chuẩn bị và xác minh.
+- Hoạt động chính diễn ra ngoài màn hình.
+- Khi hoạt động bắt đầu, giao diện chuyển sang chế độ tối giản.
+
+======================================================================
+7. KIẾN TRÚC ĐIỀU HƯỚNG GIAO DIỆN
+======================================================================
+
+Mobile bottom navigation đề xuất:
+
+  [Trang chủ] [Khám phá] [Tạo] [Đội của tôi] [Hồ sơ]
+
+Desktop sidebar đề xuất:
+
+  - Trang chủ
+  - Khám phá/Radar
+  - Hoạt động
+  - Đội săn
+  - Kho vật phẩm
+  - Chợ mảnh ghép
+  - Hồ sơ của tôi
+
+Nút nổi “Tạo” mở modal/bottom sheet:
+
+  - Tạo bài đăng
+  - Tạo hoạt động
+  - Tìm đội
+
+======================================================================
+8. MÀN HÌNH VÀ TÍNH NĂNG GIAO DIỆN
+======================================================================
+
+8.1. Splash/Onboarding
+
+Mục tiêu:
+
+- Giải thích app kết nối thông qua hoạt động thật.
+- Xin quyền vị trí đúng thời điểm, không xin ngay khi chưa giải thích.
+- Cho chọn sở thích, lịch rảnh, khoảng cách và kiểu gặp gỡ.
+
+Các bước:
+
+  Giới thiệu -> Chọn sở thích -> Chọn khu vực -> Chọn mức thoải mái
+  -> Đăng ký/Đăng nhập -> Trang chủ
+
+Thiết lập mức thoải mái:
+
+- Chỉ săn cá nhân.
+- Nhóm nhỏ 3-4 người.
+- Nhóm 5-8 người.
+- Cho phép lời mời 1-1 sau khi đã cùng hoạt động.
+
+8.2. Đăng ký
+
+Hiện có trong Flutter.
+
+Trường dữ liệu:
+
+- Họ tên.
+- Email.
+- Mật khẩu và xác nhận.
+- Đồng ý điều khoản.
+
+Cần bổ sung khi kết nối thật:
+
+- Xác minh email.
+- Ngày sinh/điều kiện độ tuổi.
+- Điều khoản an toàn khi gặp ngoài đời.
+
+8.3. Đăng nhập
+
+Hiện có trong Flutter.
+
+- Email và mật khẩu.
+- Ghi nhớ đăng nhập.
+- Quên mật khẩu.
+- Liên kết đăng ký.
+- Sau đăng nhập quay lại hành động đang thực hiện.
+
+8.4. Trang chủ
+
+Mục tiêu: giúp người dùng chọn hành động nhanh, không tạo feed vô hạn.
+
+Khu vực:
+
+- Thanh tìm kiếm.
+- Hoạt động/sự kiện nổi bật.
+- Hoạt động phù hợp gần bạn.
+- Nhóm còn thiếu người.
+- Bài đăng có mục đích và có thời hạn.
+- Tóm tắt tiến trình cá nhân.
+
+CTA chính:
+
+- Khám phá hoạt động.
+- Bắt đầu săn cá nhân.
+- Tham gia nhóm.
+- Tạo hoạt động/bài đăng.
+
+8.5. Khám phá/Radar
+
+Hiện có bản giao diện Flutter.
+
+Chế độ danh sách là mặc định; radar/bản đồ là hỗ trợ.
+
+Bộ lọc:
+
+- Loại hoạt động.
+- Khoảng cách.
+- Ngày giờ.
+- Trình độ.
+- Nhóm/cá nhân.
+- Miễn phí/có phí.
+- Khả năng tiếp cận.
+
+Không hiện vị trí người dùng khác theo thời gian thực.
+
+8.6. Danh sách hoạt động
+
+Mỗi card cần:
+
+- Tên và loại hoạt động.
+- Địa điểm công cộng ở mức khu vực.
+- Ngày, giờ, thời lượng.
+- Độ khó/trình độ.
+- Số người: ví dụ 3/5.
+- Người tổ chức và mức xác minh.
+- Khoảng cách ước tính.
+- Trạng thái: còn chỗ, đầy, đã bắt đầu.
+
+8.7. Chi tiết hoạt động
+
+Đây là màn hình quan trọng nhất còn thiếu trong Flutter.
+
+Nội dung:
+
+- Ảnh bìa và mô tả.
+- Mục tiêu hoạt động.
+- Địa điểm chung; chỉ mở điểm chính xác khi đủ điều kiện.
+- Ngày giờ và thời lượng.
+- Số người tối thiểu/tối đa.
+- Trình độ yêu cầu.
+- Danh sách thành viên.
+- Người tổ chức.
+- Vật dụng cần chuẩn bị.
+- Quy tắc an toàn.
+- Phần thưởng/huy hiệu.
+
+Nút:
+
+- Bắt đầu săn cá nhân.
+- Xin tham gia đội.
+- Lưu hoạt động.
+- Chia sẻ.
+- Báo cáo.
+
+8.8. Săn cá nhân
+
+Luồng:
+
+  Chi tiết hoạt động
+    -> Bắt đầu cá nhân
+    -> Hướng dẫn an toàn
+    -> Check-in khu vực
+    -> Bước 1
+    -> Nhập đáp án/yêu cầu hành động
+    -> Gợi ý nếu cần
+    -> Bước tiếp theo
+    -> Hoàn thành
+    -> Kết quả và phần thưởng
+
+Giao diện trong lúc săn:
+
+- Tối giản, chữ lớn.
+- Không có feed/chat không cần thiết.
+- Hiển thị bước hiện tại và tiến độ.
+- Nút trợ giúp, báo nguy hiểm, tạm dừng.
+- Cảnh báo không nhìn màn hình khi di chuyển.
+
+8.9. Đội săn
+
+Tabs:
+
+- Khám phá đội.
+- Đội của tôi.
+- Lời mời.
+
+Card đội:
+
+- Tên đội.
+- Hoạt động mục tiêu.
+- Số thành viên.
+- Trình độ.
+- Vai trò còn thiếu.
+- Điểm hẹn chung.
+- Uy tín người tổ chức.
+
+Luồng:
+
+  Xem đội -> Xin tham gia -> Chủ đội duyệt -> Mở chat giới hạn
+  -> Xác nhận tham gia -> Check-in -> Hoạt động -> Đánh giá
+
+8.10. Chat giới hạn
+
+Hiện có bản mô phỏng Flutter.
+
+Chat không phải trung tâm sản phẩm. Chức năng cần:
+
+- Danh sách bạn bè/đội.
+- Tin nhắn văn bản.
+- Chọn thời gian.
+- Chia sẻ điểm hẹn công cộng.
+- Nút “Tôi sẽ đến”, “Trễ”, “Xin rút”.
+- Chặn và báo cáo.
+
+Quy tắc đề xuất:
+
+- Chat đội mở sau khi lời mời được chấp nhận.
+- Chat hoạt động tự lưu trữ sau khi kết thúc.
+- Chỉ giữ chat cá nhân nếu hai bên tự nguyện kết bạn.
+- Không dùng streak, online pressure hoặc thông báo gây nghiện.
+
+8.11. Tạo bài đăng
+
+Hiện có modal/bottom sheet Flutter.
+
+Loại bài:
+
+- Tìm đồng đội.
+- Chia sẻ manh mối.
+- Đổi mảnh ghép.
+- Thành tích.
+
+Trường:
+
+- Nội dung.
+- Ảnh.
+- Khu vực.
+- Mảnh liên quan.
+- Quyền xem.
+- Thời hạn bài viết.
+
+Bài tìm đội phải có CTA chuyển sang hoạt động/đội, không chỉ thu thập like.
+
+8.12. Tạo hoạt động
+
+Luồng đề xuất:
+
+  Chọn loại -> Thông tin cơ bản -> Địa điểm công cộng -> Thời gian
+  -> Số người/trình độ -> Quy tắc -> Xem trước -> Đăng
+
+Người dùng mới không nên được tạo hoạt động không kiểm duyệt ngay.
+
+8.13. Hồ sơ cá nhân
+
+Hiện có Flutter và đã tham khảo Next.js.
+
+Phần hiển thị:
+
+- Ảnh bìa, avatar, tên, username.
+- Tháng tham gia và trạng thái xác minh.
+- Sở thích.
+- Số bạn, cuộc săn, rương mở, đánh giá.
+- Level và EXP.
+- Kỹ năng nổi bật.
+- Thành tích hiếm.
+- Cuộc săn gần đây.
+- Bài đăng gần đây.
+- Đánh giá từ người đã cùng hoạt động.
+
+Quyền riêng tư:
+
+- Không hiển thị địa chỉ chính xác.
+- Không hiển thị lịch hoạt động tương lai cho người lạ.
+- Cho ẩn năm sinh, khu vực, thành tích hoặc danh sách bạn.
+
+8.14. Chỉnh sửa hồ sơ
+
+Hiện có Flutter.
+
+- Tên hiển thị.
+- Username.
+- Avatar.
+- Giới thiệu.
+- Thành phố/khu vực chung.
+- Năm sinh.
+- Quyền riêng tư.
+- Sở thích.
+- Mức thoải mái khi gặp nhóm.
+- Lịch rảnh.
+- Khoảng cách sẵn sàng di chuyển.
+
+8.15. Kho vật phẩm
+
+Hiện có Flutter.
+
+- Bộ sưu tập.
+- Mảnh sở hữu và số lượng.
+- Mảnh còn thiếu.
+- Nguồn nhận.
+- Độ hiếm.
+- Tiến trình hoàn thiện bộ.
+
+Mảnh trùng có thể:
+
+- Đem trao đổi.
+- Phân rã thành nguyên liệu.
+- Dùng mở gợi ý.
+- Chế tạo vật phẩm/huy hiệu.
+
+8.16. Chợ mảnh ghép
+
+Hiện có bản giao diện Flutter.
+
+- Đề nghị đổi hai chiều.
+- Xem uy tín đối tác.
+- Chấp nhận/từ chối.
+- Chọn gặp tại hoạt động/địa điểm công cộng.
+- Hai bên xác nhận trước khi chuyển vật phẩm.
+- Lịch sử và báo cáo tranh chấp.
+
+8.17. Thông báo
+
+Chỉ gửi thông báo có giá trị:
+
+- Lời mời đội.
+- Yêu cầu tham gia được duyệt.
+- Hoạt động sắp bắt đầu.
+- Thay đổi địa điểm/thời gian.
+- Tin nhắn liên quan hoạt động.
+- Giao dịch cần xác nhận.
+- Cảnh báo an toàn.
+
+Không gửi thông báo kiểu “bạn đã bỏ lỡ bài viết”.
+
+8.18. Trung tâm an toàn
+
+- Hướng dẫn gặp người lạ.
+- Danh sách người đã chặn.
+- Báo cáo của tôi.
+- Liên hệ hỗ trợ.
+- Chia sẻ lịch hoạt động với người thân.
+- Nút rời hoạt động.
+- Quy trình khẩn cấp theo khu vực.
+
+======================================================================
+9. LUỒNG ĐĂNG NHẬP VÀ TRẠNG THÁI GIAO DIỆN
+======================================================================
+
+Khách chưa đăng nhập:
+
+- Xem hoạt động công khai ở mức giới hạn.
+- Xem hồ sơ công khai.
+- Không tạo bài, chat, tham gia đội hoặc nhận vật phẩm.
+
+Khi khách bấm hành động cần tài khoản:
+
+  Hành động -> Đăng nhập/Đăng ký -> quay lại hành động ban đầu
+
+Người đã đăng nhập:
+
+- Avatar mở Hồ sơ thay vì Đăng nhập.
+- Home hiện “Tạo bài”, “Săn cá nhân”, “Đội của tôi”.
+- Có thông báo, chat, kho vật phẩm và tiến trình.
+
+Trạng thái bắt buộc toàn app:
+
+- loading: đang kiểm tra phiên đăng nhập.
+- guest: chưa đăng nhập.
+- authenticated: đã đăng nhập.
+- profileIncomplete: đã có tài khoản nhưng chưa hoàn thiện hồ sơ.
+
+======================================================================
+10. LUỒNG KHÁM PHÁ VÀ GẶP GỠ AN TOÀN
+======================================================================
+
+  Chọn hoạt động
+    -> xem số người và người tổ chức
+    -> xem địa điểm công cộng/khoảng thời gian
+    -> chọn tham gia
+    -> xác nhận quy tắc an toàn
+    -> mở chat nhóm giới hạn
+    -> nhắc trước giờ bắt đầu
+    -> check-in tại địa điểm
+    -> xác nhận thành viên có mặt
+    -> bắt đầu hoạt động
+    -> kết thúc và đánh giá riêng tư
+    -> tùy chọn kết bạn
+
+Không mở vị trí thời gian thực của từng thành viên trước khi họ đồng ý.
+
+======================================================================
+11. LUỒNG THỂ THAO KẾT HỢP KHO BÁU
+======================================================================
+
+Ví dụ cầu lông:
+
+  Chọn “Cầu lông thử thách”
+    -> lọc trình độ mới bắt đầu
+    -> xem sân, giờ, phí và số người 3/4
+    -> xin tham gia
+    -> xác nhận
+    -> tới sân và check-in
+    -> hoàn thành ba thử thách phối hợp
+    -> mỗi thử thách mở một ký tự
+    -> cả nhóm ghép mã cuối
+    -> nhận huy hiệu + mảnh sự kiện
+    -> đánh giá trải nghiệm
+
+Kho báu là công cụ tạo mục tiêu chung, không làm gián đoạn môn thể thao.
+
+======================================================================
+12. LUỒNG SĂN KHO BÁU CÁ NHÂN
+======================================================================
+
+  Trang chủ
+    -> hoạt động gần bạn
+    -> Chi tiết Kho báu Hoàng Hôn
+    -> Săn cá nhân
+    -> xác nhận an toàn
+    -> check-in Công viên Trung tâm
+    -> nhận manh mối bước 1
+    -> nhập đáp án
+    -> nhận bước 2
+    -> hoàn thành
+    -> server cấp EXP/mảnh ghép
+    -> hiện kết quả
+    -> tùy chọn chia sẻ thành tích
+
+Không tự động tạo bài nếu người dùng chưa đồng ý.
+
+======================================================================
+13. LUỒNG THỂ HIỆN THÀNH TÍCH
+======================================================================
+
+  Hoàn thành hoạt động
+    -> server xác minh
+    -> tạo achievement record
+    -> cập nhật EXP/kỹ năng
+    -> hiển thị màn hình kết quả
+    -> người dùng chọn chia sẻ
+    -> bài đăng có nhãn “Đã xác minh”
+
+Thông tin thành tích:
+
+- Độ khó.
+- Thời gian.
+- Số người trong đội.
+- Có dùng gợi ý hay không.
+- Tỷ lệ người tham gia hoàn thành.
+- Vai trò/đóng góp.
+
+======================================================================
+14. HỆ THỐNG NỘI DUNG KHÔNG BỊ CẠN
+======================================================================
+
+- Kho báu theo mùa.
+- Mẫu câu đố sinh biến thể có kiểm soát.
+- Thứ tự bước khác nhau.
+- Mảnh yêu cầu khác nhau.
+- Nhiệm vụ ngày/tuần theo khu vực.
+- Sự kiện cộng đồng.
+- Hoạt động do đối tác/người dùng uy tín tạo.
+- Tái sử dụng địa điểm với câu chuyện mới.
+
+Không dùng ngẫu nhiên hoàn toàn vì câu đố ngoài đời cần được kiểm tra.
+
+======================================================================
+15. QUY TẮC THIẾT KẾ GIAO DIỆN
+======================================================================
+
+- Dark theme có cyan cho khám phá và orange cho hành động chính.
+- Một màn hình chỉ có một CTA nổi bật.
+- Mobile-first; nút chạm tối thiểu khoảng 44-48 px.
+- Nội dung quan trọng không phụ thuộc chỉ vào màu sắc.
+- Có loading, empty, error, offline và permission-denied state.
+- Form dài phải lưu nháp hoặc cảnh báo trước khi thoát.
+- Dữ liệu vị trí luôn giải thích mục đích sử dụng.
+- Không dùng cuộn vô hạn làm trung tâm Home.
+- Trong hoạt động, giảm animation và thành phần gây phân tâm.
+- Hỗ trợ chữ lớn, độ tương phản và người dùng hạn chế vận động.
+
+Responsive:
+
+- Mobile: một cột, bottom navigation, modal dạng bottom sheet.
+- Tablet: một hoặc hai cột, navigation rail.
+- Desktop Flutter nếu còn hỗ trợ: sidebar + nội dung hai cột.
+- Nếu Next.js là web chính, Flutter chỉ cần tối ưu mobile/tablet.
+
+======================================================================
+16. TRẠNG THÁI GIAO DIỆN BẮT BUỘC
+======================================================================
+
+Mỗi màn hình dữ liệu cần có:
+
+1. Loading/skeleton.
+2. Có dữ liệu.
+3. Không có dữ liệu.
+4. Lỗi mạng.
+5. Không có quyền.
+6. Offline.
+7. Đang gửi/lưu.
+8. Thành công.
+
+Ví dụ Home chưa có hoạt động:
+
+  “Chưa có hoạt động phù hợp trong 5 km.
+   Hãy mở rộng bán kính hoặc tạo một hoạt động công cộng.”
+
+Không hiển thị người dùng giả như thể họ là người thật trong production.
+
+======================================================================
+17. TÍNH NĂNG AN TOÀN BẮT BUỘC
+======================================================================
+
+- Xác minh email; tùy giai đoạn có thể thêm điện thoại.
+- Chặn và báo cáo.
+- Địa điểm công cộng.
+- Không lộ GPS người dùng.
+- Trạng thái người tổ chức đã xác minh.
+- Giới hạn người dưới tuổi.
+- Lưu lịch sử thay đổi hoạt động.
+- Người dùng có thể rút bất kỳ lúc nào.
+- Đánh giá chỉ mở sau check-in/hoạt động thật.
+- Phát hiện spam, quấy rối và tạo hoạt động hàng loạt.
+- Nút báo địa điểm nguy hiểm/không còn tồn tại.
+
+======================================================================
+18. DATABASE/SUPABASE THEO TÍNH NĂNG
+======================================================================
+
+Tài khoản:
+
+- auth.users
+- profiles
+- interests
+- user_interests
+- user_availability
+
+Xã hội:
+
+- friendships
+- posts
+- post_media
+- post_comments
+- post_likes
+- reports
+- blocked_users
+
+Hoạt động:
+
+- activities
+- activity_categories
+- activity_participants
+- activity_requests
+- activity_check_ins
+- activity_reviews
+
+Săn kho báu:
+
+- treasure_templates
+- treasure_instances
+- treasure_steps
+- user_hunts
+- user_hunt_progress
+- achievements
+- user_achievements
+
+Đội/chat:
+
+- teams
+- team_members
+- team_invitations
+- conversations
+- conversation_members
+- messages
+
+Vật phẩm:
+
+- treasure_sets
+- pieces
+- user_pieces
+- trade_offers
+- trade_offer_items
+- trade_transactions
+
+Vận hành:
+
+- notifications
+- moderation_actions
+- location_reports
+
+Tất cả dữ liệu người dùng cần RLS. Phần thưởng và xác minh quan trọng phải
+được xử lý phía server/database, không tin trực tiếp giá trị do app gửi lên.
+
+======================================================================
+19. THỨ TỰ PHÁT TRIỂN
+======================================================================
+
+Giai đoạn 1 - Nền tảng:
+
+1. Supabase Auth.
+2. Hồ sơ và chỉnh sửa hồ sơ thật.
+3. Auth state toàn app.
+4. Bài đăng và upload ảnh thật.
+
+Giai đoạn 2 - Giá trị cốt lõi:
+
+5. Danh sách hoạt động.
+6. Chi tiết hoạt động.
+7. Săn cá nhân.
+8. Check-in và xác minh đáp án.
+9. Kết quả, EXP và thành tích.
+
+Giai đoạn 3 - Giao lưu:
+
+10. Đội săn/nhóm hoạt động.
+11. Lời mời và tham gia.
+12. Chat giới hạn.
+13. Đánh giá sau hoạt động.
+
+Giai đoạn 4 - Nội dung sống:
+
+14. Kho vật phẩm thật.
+15. Chợ trao đổi.
+16. Mùa và biến thể câu đố.
+17. Công cụ quản trị và kiểm duyệt.
+
+Không nên tiếp tục làm nhiều giao diện mock trước khi Auth -> Profile ->
+Activity -> Solo Hunt hoạt động bằng dữ liệu thật.
+
+======================================================================
+20. MVP THỬ NGHIỆM NGOÀI ĐỜI
+======================================================================
+
+Phạm vi:
+
+- Một trường đại học, công viên hoặc khu vực nhỏ.
+- 20-50 người dùng thử.
+- 3-5 địa điểm công cộng.
+- Một cuộc săn đi bộ.
+- Một hoạt động thể thao nhóm nhỏ.
+- Có người điều phối trong giai đoạn đầu.
+
+Câu hỏi cần đo:
+
+- Bao nhiêu người xem rồi đăng ký?
+- Bao nhiêu người đăng ký thật sự đến?
+- Vì sao họ hủy?
+- Họ cảm thấy không an toàn tại bước nào?
+- Hoạt động có giúp trò chuyện tự nhiên không?
+- Họ có muốn gặp lại hoặc tham gia hoạt động khác không?
+- Họ có thấy thành tích phản ánh đúng đóng góp không?
+
+======================================================================
+21. KẾT LUẬN
+======================================================================
+
+Treasure IRL nên là nền tảng “activity-first social network”:
+
+  Hoạt động trước -> trải nghiệm chung -> niềm tin -> tình bạn.
+
+Săn kho báu là bản sắc và cơ chế phá băng. Thể thao, đi bộ, cà phê và
+board game là các ngữ cảnh để cơ chế đó tạo ra kết nối đời thực.
+
+Sản phẩm chỉ thành công khi người dùng dành ít thời gian hơn để lướt app,
+nhưng thực hiện nhiều hoạt động có ý nghĩa hơn ngoài đời.

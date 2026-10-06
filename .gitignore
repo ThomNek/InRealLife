@@ -1,0 +1,57 @@
+# ==========================================
+# Root & Workspace Temp Directories
+# ==========================================
+.dart_appdata/
+.dart_localappdata/
+.docx_work/
+
+# ==========================================
+# Environment & Secrets (API Keys, Passwords)
+# ==========================================
+.env
+.env.*
+*.env
+!.env.example
+*.key
+*.pem
+*.secret
+*.p12
+*.jks
+**/android/app/key.properties
+
+# ==========================================
+# Flutter / Dart Build & Generated Files
+# ==========================================
+build/
+**/build/
+.dart_tool/
+**/.dart_tool/
+.pub-cache/
+.pub/
+**/.pub/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+
+# Android / iOS / Desktop ephemeral & build artifacts
+**/android/app/debug
+**/android/app/profile
+**/android/app/release
+**/android/.gradle/
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/ephemeral/
+**/ios/Pods/
+**/macos/Flutter/ephemeral/
+**/windows/flutter/ephemeral/
+**/linux/flutter/ephemeral/
+
+# ==========================================
+# IDE & System Files
+# ==========================================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.bak
+*.tmp
