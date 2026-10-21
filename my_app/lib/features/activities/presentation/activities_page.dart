@@ -34,7 +34,10 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
       'distance_km': 1.2,
       'people': '3/5 người',
       'level': 'Mới bắt đầu',
-      'route': '/activities/sunset',
+      'hostName': 'Minh Quân',
+      'targetGender': 'all',
+      'joinPolicy': 'everyone',
+      'activityId': null, // null = dữ liệu mẫu chưa có ID thật
     },
     {
       'id': 'ACT-02',
@@ -47,6 +50,9 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
       'distance_km': 2.4,
       'people': '3/4 người',
       'level': 'Cơ bản',
+      'hostName': 'Hoàng Long',
+      'targetGender': 'male_only',
+      'joinPolicy': 'everyone',
       'route': null,
     },
     {
@@ -60,6 +66,9 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
       'distance_km': 0.8,
       'people': '2/6 người',
       'level': 'Mọi trình độ',
+      'hostName': 'Thảo My',
+      'targetGender': 'female_only',
+      'joinPolicy': 'friends_only',
       'route': null,
     },
     {
@@ -73,6 +82,9 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
       'distance_km': 3.1,
       'people': '4/8 người',
       'level': 'Trung bình',
+      'hostName': 'Đức Huy',
+      'targetGender': 'all',
+      'joinPolicy': 'everyone',
       'route': null,
     },
   ];
@@ -238,7 +250,7 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
                           crossAxisCount: columns,
                           crossAxisSpacing: gap,
                           mainAxisSpacing: gap,
-                          mainAxisExtent: columns == 1 ? 270 : 310,
+                          mainAxisExtent: columns == 1 ? 320 : 355,
                         ),
                         delegate: SliverChildListDelegate(
                           filteredItems.map((item) {
@@ -250,9 +262,19 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
                               meta: item['meta'] as String,
                               people: item['people'] as String,
                               level: item['level'] as String,
+                              hostName: item['hostName'] as String?,
+                              targetGender: (item['targetGender'] as String?) ?? 'all',
+                              joinPolicy: (item['joinPolicy'] as String?) ?? 'everyone',
                               onTap: () {
+                                final activityId = item['activityId'] as String?;
                                 final route = item['route'] as String?;
-                                if (route != null) {
+                                if (activityId != null) {
+                                  Navigator.pushNamed(
+                                    context,
+                                    '/activities/detail',
+                                    arguments: activityId,
+                                  );
+                                } else if (route != null) {
                                   Navigator.pushNamed(context, route);
                                 } else {
                                   _soon(context);

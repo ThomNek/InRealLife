@@ -5,7 +5,6 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/user_avatar.dart';
 import '../../../profile/domain/profile_progress.dart';
 
-const String _logoAsset = 'assets/images/logos/Logo1.png';
 
 const TextStyle _sectionLabelStyle = TextStyle(
   fontSize: 12,
@@ -26,15 +25,39 @@ class HomeRightPanel extends StatelessWidget {
           children: [
             _accountCard(profile),
             const SizedBox(height: 14),
-            const _RightPanelCard(
+            _RightPanelCard(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('THỢ SĂN GẦN BẠN', style: _sectionLabelStyle),
-                  SizedBox(height: 12),
-                  _Friend(name: 'Nam', status: 'Đang đi săn', online: true),
-                  _Friend(name: 'Linh', status: 'Rảnh', online: true),
-                  _Friend(name: 'Tùng', status: 'Offline', online: false),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Expanded(
+                        child: Text(
+                          'THỢ SĂN GẦN BẠN',
+                          style: _sectionLabelStyle,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      InkWell(
+                        onTap: () => Navigator.pushNamed(context, '/users'),
+                        child: const Text(
+                          'Xem tất cả',
+                          style: TextStyle(
+                            color: AppColors.cyan,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  const _Friend(name: 'Nam', status: 'Đang đi săn', online: true),
+                  const _Friend(name: 'Linh', status: 'Rảnh', online: true),
+                  const _Friend(name: 'Tùng', status: 'Offline', online: false),
                 ],
               ),
             ),
@@ -109,6 +132,11 @@ class HomeRightPanel extends StatelessWidget {
     final avatarUrl = profileAvatar?.trim().isNotEmpty == true
         ? profileAvatar
         : metadataAvatar;
+    final profileGender = profile?['gender'] as String?;
+    final metadataGender = user?.userMetadata?['gender'] as String?;
+    final gender = profileGender?.trim().isNotEmpty == true
+        ? profileGender
+        : metadataGender;
 
     return _RightPanelCard(
       child: Column(
@@ -121,8 +149,8 @@ class HomeRightPanel extends StatelessWidget {
             ),
             child: UserAvatar(
               radius: 31,
-              fallbackAsset: _logoAsset,
               avatarUrl: avatarUrl,
+              gender: gender,
             ),
           ),
           const SizedBox(height: 8),

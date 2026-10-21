@@ -6,7 +6,6 @@ import '../../../../core/widgets/app_navigation_shell.dart';
 import '../../../../core/widgets/user_avatar.dart';
 import 'realtime_actions.dart';
 
-const String _logoAsset = 'assets/images/logos/Logo1.png';
 
 class HomeTopBar extends StatelessWidget {
   const HomeTopBar({
@@ -25,11 +24,15 @@ class HomeTopBar extends StatelessWidget {
             const AppBrand(showText: false),
             const SizedBox(width: 10),
           ],
-          const Expanded(
+          Expanded(
             child: TextField(
-              decoration: InputDecoration(
+              readOnly: true,
+              onTap: () {
+                Navigator.pushNamed(context, '/users');
+              },
+              decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.search_rounded),
-                hintText: 'Tìm rương, khu vực, nhóm...',
+                hintText: 'Tìm bạn bè, thợ săn, mọi người...',
               ),
             ),
           ),
@@ -84,6 +87,12 @@ class _AccountButton extends StatelessWidget {
     final avatarUrl = profileAvatar?.trim().isNotEmpty == true
         ? profileAvatar
         : metadataAvatar;
+
+    final profileGender = profile?['gender'] as String?;
+    final metadataGender = user?.userMetadata?['gender'] as String?;
+    final gender = profileGender?.trim().isNotEmpty == true
+        ? profileGender
+        : metadataGender;
 
     return Tooltip(
       message: isSignedIn ? 'Mở tài khoản' : 'Đăng nhập',
@@ -143,8 +152,8 @@ class _AccountButton extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(4),
               child: UserAvatar(
-                fallbackAsset: _logoAsset,
                 avatarUrl: avatarUrl,
+                gender: gender,
                 radius: 18,
               ),
             ),

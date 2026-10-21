@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_theme.dart';
+import '../../home/presentation/widgets/chat_panel.dart';
 import '../data/chat_repository.dart';
 
 class ConversationPageArgs {
@@ -78,9 +79,7 @@ class _ConversationPageState extends State<ConversationPage>
   Widget build(BuildContext context) {
     final args = _args;
     if (args == null) {
-      return const Scaffold(
-        body: Center(child: Text('Không xác định được cuộc trò chuyện.')),
-      );
+      return const HomeChatPanel(isStandalonePage: true);
     }
     return Scaffold(
       appBar: AppBar(

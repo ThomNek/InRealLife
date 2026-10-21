@@ -15,6 +15,9 @@ class ActivityExploreCard extends StatelessWidget {
     required this.meta,
     required this.people,
     required this.level,
+    this.hostName,
+    this.targetGender = 'all',
+    this.joinPolicy = 'everyone',
     required this.onTap,
   });
 
@@ -25,7 +28,43 @@ class ActivityExploreCard extends StatelessWidget {
   final String meta;
   final String people;
   final String level;
+  final String? hostName;
+  final String targetGender;
+  final String joinPolicy;
   final VoidCallback onTap;
+
+  static String _genderLabel(String gender) {
+    switch (gender) {
+      case 'female_only':
+        return '👩 Chỉ nữ';
+      case 'male_only':
+        return '👨 Chỉ nam';
+      default:
+        return '👥 Nam & Nữ';
+    }
+  }
+
+  static String _policyLabel(String policy) {
+    switch (policy) {
+      case 'friends_only':
+        return '🤝 Chỉ bạn bè';
+      default:
+        return '🌐 Mọi người';
+    }
+  }
+
+  Widget _buildTag(String text) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+        decoration: BoxDecoration(
+          color: const Color(0xFF191D2C),
+          borderRadius: BorderRadius.circular(6),
+          border: Border.all(color: AppColors.border),
+        ),
+        child: Text(
+          text,
+          style: const TextStyle(color: AppColors.muted, fontSize: 10),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) => Material(
@@ -85,9 +124,43 @@ class ActivityExploreCard extends StatelessWidget {
             ),
             const SizedBox(height: 7),
             Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
-            const SizedBox(height: 9),
+            const SizedBox(height: 7),
             Text(meta, style: const TextStyle(color: AppColors.muted)),
-            const SizedBox(height: 13),
+            if (hostName != null && hostName!.isNotEmpty) ...[
+              const SizedBox(height: 6),
+              Row(
+                children: [
+                  const Icon(
+                    Icons.person_rounded,
+                    size: 14,
+                    color: AppColors.muted,
+                  ),
+                  const SizedBox(width: 4),
+                  Expanded(
+                    child: Text(
+                      'Host: $hostName',
+                      style: const TextStyle(
+                        color: AppColors.muted,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+            const SizedBox(height: 8),
+            Wrap(
+              spacing: 6,
+              runSpacing: 4,
+              children: [
+                _buildTag(_genderLabel(targetGender)),
+                _buildTag(_policyLabel(joinPolicy)),
+              ],
+            ),
+            const SizedBox(height: 12),
             Row(
               children: [
                 const Icon(Icons.groups_outlined, size: 17, color: AppColors.muted),

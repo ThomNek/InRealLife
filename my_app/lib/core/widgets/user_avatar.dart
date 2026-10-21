@@ -1,31 +1,72 @@
 import 'package:flutter/material.dart';
 
+/// Đường dẫn ảnh đại diện mặc định theo giới tính.
+///
+/// Ảnh được lưu tại `assets/images/avatars/` để dễ thay thế
+/// mà không cần rebuild khi dùng CDN sau này.
+class AvatarDefaults {
+  AvatarDefaults._();
+
+  static const String male = 'assets/images/avatars/avatar_male.png';
+  static const String female = 'assets/images/avatars/avatar_female.png';
+  static const String other = 'assets/images/avatars/avatar_male.png';
+  static const String fallbackLogo = 'assets/images/avatars/avatar_male.png';
+
+  /// Trả về asset path phù hợp với giới tính. Nếu gender null/không khớp → mặc định avatar_male.
+  static String forGender(String? gender) {
+    switch (gender?.toLowerCase()) {
+      case 'female':
+        return female;
+      case 'male':
+      default:
+        return male;
+    }
+  }
+}
+
 /// Avatar dùng chung cho các khu vực tài khoản.
 ///
-/// Ảnh cục bộ luôn được dùng trong lúc tải và khi URL lỗi, nhờ đó kết nối ảnh
-/// chậm không làm mất avatar hoặc tạo vùng trống trên giao diện.
+/// - Nếu `avatarUrl` có giá trị → dùng ảnh mạng (với fallback ảnh local).
+/// - Nếu không có URL → hiển thị ảnh mặc định theo `gender`.
 class UserAvatar extends StatelessWidget {
   const UserAvatar({
     super.key,
-    required this.fallbackAsset,
+    @Deprecated('Dùng gender thay vì truyền fallbackAsset cụ thể')
+    this.fallbackAsset,
     this.avatarUrl,
+    this.gender,
     this.radius = 20,
     this.backgroundColor = Colors.white,
   });
 
-  final String fallbackAsset;
+  // ignore: deprecated_member_use_from_same_package
+  final String? fallbackAsset;
   final String? avatarUrl;
+  final String? gender;
   final double radius;
   final Color backgroundColor;
+
+  String get _resolvedFallback {
+    // ignore: deprecated_member_use_from_same_package
+    if (fallbackAsset != null) return fallbackAsset!;
+    return AvatarDefaults.forGender(gender);
+  }
 
   @override
   Widget build(BuildContext context) {
     final normalizedUrl = avatarUrl?.trim();
-    final fallback = Image.asset(
-      fallbackAsset,
+    final fallbackWidget = Image.asset(
+      _resolvedFallback,
       fit: BoxFit.cover,
       width: radius * 2,
       height: radius * 2,
+      // Nếu file avatar_*.png chưa có sẽ fallback Logo
+      errorBuilder: (_, _, _) => Image.asset(
+        AvatarDefaults.fallbackLogo,
+        fit: BoxFit.cover,
+        width: radius * 2,
+        height: radius * 2,
+      ),
     );
 
     return CircleAvatar(
@@ -39,10 +80,10 @@ class UserAvatar extends StatelessWidget {
                 width: radius * 2,
                 height: radius * 2,
                 loadingBuilder: (context, child, progress) =>
-                    progress == null ? child : fallback,
-                errorBuilder: (_, _, _) => fallback,
+                    progress == null ? child : fallbackWidget,
+                errorBuilder: (_, _, _) => fallbackWidget,
               )
-            : fallback,
+            : fallbackWidget,
       ),
     );
   }

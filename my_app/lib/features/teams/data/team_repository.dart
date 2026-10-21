@@ -1,10 +1,17 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../domain/team_model.dart';
+
 class TeamRepository {
   TeamRepository({SupabaseClient? client})
-    : _client = client ?? Supabase.instance.client;
+      : _client = client ?? Supabase.instance.client;
 
   final SupabaseClient _client;
+
+  Future<List<TeamItem>> fetchRecruitingTeamList() async {
+    final rows = await fetchRecruitingTeams();
+    return rows.map((e) => TeamItem.fromMap(e)).toList();
+  }
 
   Future<List<Map<String, dynamic>>> fetchRecruitingTeams() async {
     final user = _client.auth.currentUser;
@@ -132,10 +139,20 @@ class TeamRepository {
   Future<void> requestToJoin(String teamId, {String message = ''}) async {
     final user = _client.auth.currentUser;
     if (user == null) throw const AuthException('Bạn chưa đăng nhập.');
-    await _client.rpc(
-      'request_to_join_team',
-      params: {'p_team_id': teamId, 'p_message': message.trim()},
-    );
+    try {
+      await _client.rpc(
+        'request_to_join_team',
+        params: {'p_team_id': teamId, 'p_message': message.trim()},
+      );
+    } catch (_) {
+      // Fallback chèn trực tiếp vào bảng team_requests nếu RPC chưa được nạp
+      await _client.from('team_requests').upsert({
+        'team_id': teamId,
+        'user_id': user.id,
+        'message': message.trim(),
+        'status': 'pending',
+      });
+    }
   }
 
   Future<Map<String, dynamic>> fetchTeam(String teamId) {

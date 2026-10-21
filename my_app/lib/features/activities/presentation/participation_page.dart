@@ -226,22 +226,10 @@ class _ParticipationPageState extends State<ParticipationPage>
 
   Future<void> _openActivity(Map<String, dynamic> activity) async {
     final activityId = activity['id'] as String?;
-    if (activityId != null) {
-      final hostTeam = await TeamRepository().findHostTeamForActivity(activityId);
-      if (hostTeam != null && mounted) {
-        await Navigator.pushNamed(
-          context,
-          '/teams/detail',
-          arguments: hostTeam['id'] as String?,
-        );
-        if (mounted) setState(_reload);
-        return;
-      }
-    }
-    if (!mounted) return;
+    if (activityId == null) return;
     await Navigator.pushNamed(
       context,
-      '/activities/sunset',
+      '/activities/detail',
       arguments: activityId,
     );
     if (mounted) setState(_reload);

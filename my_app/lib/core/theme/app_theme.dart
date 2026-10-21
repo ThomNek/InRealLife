@@ -19,6 +19,10 @@ abstract final class AppTheme {
       secondary: AppColors.cyan,
       surface: AppColors.surface,
     ),
+    actionIconTheme: ActionIconThemeData(
+      backButtonIconBuilder: (BuildContext context) =>
+          const Icon(Icons.arrow_back_rounded),
+    ),
     textTheme: const TextTheme(
       titleLarge: TextStyle(fontWeight: FontWeight.w900),
       titleMedium: TextStyle(fontWeight: FontWeight.w800),

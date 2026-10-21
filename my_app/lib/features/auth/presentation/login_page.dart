@@ -4,7 +4,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/theme/app_theme.dart';
 import '../data/auth_repository.dart';
 
-const _logo = 'assets/images/logos/Logo1.png';
 const _banner = 'assets/images/banners/AnhSuoi.jpg';
 
 class LoginPage extends StatefulWidget {
@@ -106,19 +105,13 @@ class _LoginPageState extends State<LoginPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            children: [
-              ClipOval(child: Image.asset(_logo, width: 42, height: 42)),
-              const SizedBox(width: 10),
-              const Text(
-                'TREASURE IRL',
-                style: TextStyle(
-                  color: AppColors.orange,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 1.1,
-                ),
-              ),
-            ],
+          const Text(
+            'TREASURE IRL',
+            style: TextStyle(
+              color: AppColors.orange,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 1.1,
+            ),
           ),
           const SizedBox(height: 34),
           const Text(

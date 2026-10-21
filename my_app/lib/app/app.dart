@@ -20,6 +20,7 @@ import '../features/activities/presentation/check_in_page.dart';
 import '../features/inventory/presentation/inventory_page.dart';
 import '../features/profile/presentation/profile_page.dart';
 import '../features/profile/presentation/edit_profile_page.dart';
+import '../features/profile/presentation/users_explore_page.dart';
 import '../features/posts/presentation/create_post_page.dart';
 import '../features/radar/presentation/radar_page.dart';
 import '../features/teams/presentation/create_team_page.dart';
@@ -92,6 +93,8 @@ class _TreasureIrlAppState extends State<TreasureIrlApp> {
       '/profile': (context) => const _ProtectedRoute(child: ProfilePage()),
       '/profile/edit': (context) =>
           const _ProtectedRoute(child: EditProfilePage()),
+      '/users': (context) =>
+          const _ProtectedRoute(child: UsersExplorePage()),
       '/radar': (context) => const _ProtectedRoute(child: RadarPage()),
       '/inventory': (context) => const _ProtectedRoute(child: InventoryPage()),
       '/market': (context) =>
@@ -100,7 +103,7 @@ class _TreasureIrlAppState extends State<TreasureIrlApp> {
           const _ProtectedRoute(child: CreatePostPage()),
       '/activities': (context) =>
           const _ProtectedRoute(child: ParticipationPage()),
-      '/activities/sunset': (context) =>
+      '/activities/detail': (context) =>
           const _ProtectedRoute(child: ActivityDetailPage()),
       '/solo-hunt': (context) => const _ProtectedRoute(child: SoloHuntPage()),
       // Giữ route cũ để các liên kết/bookmark trước đây vẫn hoạt động, nhưng

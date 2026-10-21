@@ -67,20 +67,14 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   style: TextStyle(fontWeight: FontWeight.w900),
                 ),
               ),
-              child: Scrollbar(
-                controller: _pageController,
-                thumbVisibility: desktop,
-                thickness: 8,
-                radius: const Radius.circular(20),
-                child: ScrollConfiguration(
-                  behavior: ScrollConfiguration.of(context)
-                      .copyWith(scrollbars: false),
-                  child: HomeFeed(
-                    controller: _pageController,
-                    compact: !desktop,
-                    mobile: !desktop && !tablet,
-                    profile: profileSnapshot.data,
-                  ),
+              child: ScrollConfiguration(
+                behavior: ScrollConfiguration.of(context)
+                    .copyWith(scrollbars: false),
+                child: HomeFeed(
+                  controller: _pageController,
+                  compact: !desktop,
+                  mobile: !desktop && !tablet,
+                  profile: profileSnapshot.data,
                 ),
               ),
             );

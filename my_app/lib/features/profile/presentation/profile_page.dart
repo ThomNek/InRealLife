@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/theme/app_theme.dart';
+import '../../../core/widgets/app_back_button.dart';
 import '../../../core/widgets/app_navigation_shell.dart';
 import '../data/profile_repository.dart';
 import 'widgets/profile_content.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  const ProfilePage({super.key, this.userId});
+
+  final String? userId;
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -15,16 +18,34 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   late Future<Map<String, dynamic>?> _profileFuture;
+  String? _effectiveUserId;
 
   @override
   void initState() {
     super.initState();
-    _profileFuture = ProfileRepository().fetchCurrentProfile();
+    _effectiveUserId = widget.userId;
+    _reloadProfile();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final argsId = ModalRoute.of(context)?.settings.arguments as String?;
+    final targetId = widget.userId ?? argsId;
+    if (targetId != _effectiveUserId) {
+      _effectiveUserId = targetId;
+      _reloadProfile();
+    }
   }
 
   void _reloadProfile() {
     setState(() {
-      _profileFuture = ProfileRepository().fetchCurrentProfile();
+      final id = _effectiveUserId;
+      if (id != null && id.isNotEmpty) {
+        _profileFuture = ProfileRepository().fetchProfile(id);
+      } else {
+        _profileFuture = ProfileRepository().fetchCurrentProfile();
+      }
     });
   }
 
@@ -52,10 +73,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           backgroundColor: AppColors.background.withValues(
                             alpha: .94,
                           ),
-                          leading: IconButton(
-                            tooltip: 'Quay lại',
+                          leading: AppBackButton(
                             onPressed: () => Navigator.pop(context),
-                            icon: const Icon(Icons.arrow_back_rounded),
                           ),
                           title: const Text(
                             'Hồ sơ cá nhân',
@@ -67,17 +86,20 @@ class _ProfilePageState extends State<ProfilePage> {
                               onPressed: () => _showShareMessage(context),
                               icon: const Icon(Icons.ios_share_rounded),
                             ),
-                            IconButton(
-                              tooltip: 'Chỉnh sửa hồ sơ',
-                              onPressed: () async {
-                                final updated = await Navigator.pushNamed(
-                                  context,
-                                  '/profile/edit',
-                                );
-                                if (updated == true && mounted) _reloadProfile();
-                              },
-                              icon: const Icon(Icons.edit_outlined),
-                            ),
+                            if (_effectiveUserId == null ||
+                                _effectiveUserId ==
+                                    Supabase.instance.client.auth.currentUser?.id)
+                              IconButton(
+                                tooltip: 'Chỉnh sửa hồ sơ',
+                                onPressed: () async {
+                                  final updated = await Navigator.pushNamed(
+                                    context,
+                                    '/profile/edit',
+                                  );
+                                  if (updated == true && mounted) _reloadProfile();
+                                },
+                                icon: const Icon(Icons.edit_outlined),
+                              ),
                             const SizedBox(width: 8),
                           ],
                         ),

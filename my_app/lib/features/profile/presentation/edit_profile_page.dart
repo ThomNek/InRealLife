@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/theme/app_theme.dart';
+import '../../../core/widgets/app_back_button.dart';
+import '../../../core/widgets/user_avatar.dart';
 import '../data/profile_repository.dart';
-
-const _logo = 'assets/images/logos/Logo1.png';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -23,9 +23,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final _city = TextEditingController();
   final _birthYear = TextEditingController();
   String _visibility = 'public';
+  String _gender = 'other';
   bool _loading = true;
   Object? _loadError;
   bool _saving = false;
+  bool _hasUnsavedChanges = false;
   final Set<String> _interests = {};
 
   static const _interestOptions = [
@@ -41,6 +43,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
   void initState() {
     super.initState();
     _loadProfile();
+    _name.addListener(_markDirty);
+    _username.addListener(_markDirty);
+    _avatarUrl.addListener(_markDirty);
+    _bio.addListener(_markDirty);
+    _city.addListener(_markDirty);
+    _birthYear.addListener(_markDirty);
+  }
+
+  void _markDirty() {
+    if (!_hasUnsavedChanges) setState(() => _hasUnsavedChanges = true);
   }
 
   Future<void> _loadProfile() async {
@@ -60,6 +72,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             (metadata?['display_name'] as String?)?.trim().isNotEmpty == true
             ? (metadata!['display_name'] as String).trim()
             : (user?.email?.split('@').first ?? 'Người dùng');
+        _gender = (metadata?['gender'] as String?) ?? 'other';
       } else {
         _name.text = (profile['display_name'] as String?) ?? '';
         _username.text = (profile['username'] as String?) ?? '';
@@ -69,6 +82,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         _birthYear.text =
             (profile['birth_year'] as num?)?.toInt().toString() ?? '';
         _visibility = (profile['profile_visibility'] as String?) ?? 'public';
+        _gender = (profile['gender'] as String?) ?? 'other';
         final interests = profile['interests'];
         _interests
           ..clear()
@@ -76,6 +90,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             interests is List ? interests.whereType<String>() : const [],
           );
       }
+      _hasUnsavedChanges = false;
     } catch (error) {
       if (mounted) _loadError = error;
     } finally {
@@ -94,245 +109,348 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      title: const Text(
-        'Chỉnh sửa hồ sơ',
-        style: TextStyle(fontWeight: FontWeight.w900),
-      ),
-      actions: [
-        TextButton(
-          onPressed: _saving ? null : _save,
-          child: const Text(
-            'Lưu',
-            style: TextStyle(fontWeight: FontWeight.w900),
-          ),
+  Future<bool> _onWillPop() async {
+    if (!_hasUnsavedChanges) return true;
+    final result = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text(
+          'Bỏ thay đổi?',
+          style: TextStyle(fontWeight: FontWeight.w900),
         ),
-        const SizedBox(width: 8),
-      ],
-    ),
-    body: SafeArea(
-      child: _loading
-          ? const Center(child: CircularProgressIndicator())
-          : _loadError != null
-          ? _ProfileLoadError(onRetry: _loadProfile)
-          : LayoutBuilder(
-              builder: (context, constraints) {
-                final wide = constraints.maxWidth >= 800;
-                return SingleChildScrollView(
-                  padding: EdgeInsets.all(wide ? 28 : 14),
-                  child: Center(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 820),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          children: [
-                            _AvatarEditor(
-                              avatarUrl: _avatarUrl.text,
-                              onTap: () => _message(
-                                'Chức năng chọn ảnh sẽ kết nối sau.',
-                              ),
-                            ),
-                            const SizedBox(height: 18),
-                            _EditSection(
-                              number: '1',
-                              title: 'Thông tin cơ bản',
-                              subtitle: 'Tên và username xuất hiện ở mọi nơi trong cộng đồng.',
-                              child: Column(
-                                children: [
-                                  _ResponsiveFields(
-                                    wide: wide,
-                                    children: [
-                                      _ProfileField(
-                                        label: 'Tên hiển thị *',
-                                        controller: _name,
-                                        icon: Icons.person_outline_rounded,
-                                        maxLength: 80,
-                                        validator: (value) {
-                                          final length =
-                                              value?.trim().length ?? 0;
-                                          if (length < 2) {
-                                            return 'Vui lòng nhập tên hiển thị';
-                                          }
-                                          if (length > 80) {
-                                            return 'Tên tối đa 80 ký tự';
-                                          }
-                                          return null;
-                                        },
-                                      ),
-                                      _ProfileField(
-                                        label: 'Username',
-                                        controller: _username,
-                                        icon: Icons.alternate_email_rounded,
-                                        maxLength: 30,
-                                        validator: _validateUsername,
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 14),
-                                  _ProfileField(
-                                    label: 'URL ảnh đại diện',
-                                    controller: _avatarUrl,
-                                    icon: Icons.link_rounded,
-                                    hint: 'https://...',
-                                    keyboardType: TextInputType.url,
-                                    onChanged: (_) => setState(() {}),
-                                  ),
-                                  const SizedBox(height: 14),
-                                  _ProfileField(
-                                    label: 'Giới thiệu',
-                                    controller: _bio,
-                                    icon: Icons.notes_rounded,
-                                    maxLines: 4,
-                                    maxLength: 500,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                            _EditSection(
-                              number: '2',
-                              title: 'Thông tin thêm',
-                              subtitle: 'Địa điểm và năm sinh giúp kết nối với thợ săn gần bạn.',
-                              child: Column(
-                                children: [
-                                  _ResponsiveFields(
-                                    wide: wide,
-                                    children: [
-                                      _ProfileField(
-                                        label: 'Địa điểm',
-                                        controller: _city,
-                                        icon: Icons.location_on_outlined,
-                                        maxLength: 120,
-                                      ),
-                                      _ProfileField(
-                                        label: 'Năm sinh',
-                                        controller: _birthYear,
-                                        icon: Icons.cake_outlined,
-                                        hint: 'Ví dụ: 1995',
-                                        keyboardType: TextInputType.number,
-                                        validator: _validateBirthYear,
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 14),
-                                  DropdownButtonFormField<String>(
-                                    initialValue: _visibility,
-                                    isExpanded: true,
-                                    decoration: const InputDecoration(
-                                      labelText: 'Quyền riêng tư hồ sơ',
-                                      prefixIcon: Icon(
-                                        Icons.visibility_outlined,
-                                      ),
-                                    ),
-                                    items: const [
-                                      DropdownMenuItem(
-                                        value: 'public',
-                                        child: Text(
-                                          'Công khai — Mọi người đều có thể xem',
-                                        ),
-                                      ),
-                                      DropdownMenuItem(
-                                        value: 'shared',
-                                        child: Text(
-                                          'Cùng đội — Chỉ người có hoạt động chung',
-                                        ),
-                                      ),
-                                      DropdownMenuItem(
-                                        value: 'private',
-                                        child: Text(
-                                          'Riêng tư — Chỉ mình bạn xem được',
-                                        ),
-                                      ),
-                                    ],
-                                    onChanged: (value) {
-                                      if (value != null) {
-                                        setState(() => _visibility = value);
-                                      }
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                            _EditSection(
-                              number: '3',
-                              title: 'Sở thích',
-                              subtitle: 'Chọn sở thích để hiển thị trên hồ sơ của bạn.',
-                              child: Wrap(
-                                spacing: 9,
-                                runSpacing: 9,
-                                children: _interestOptions.map((item) {
-                                  final selected = _interests.contains(item.$2);
-                                  return FilterChip(
-                                    selected: selected,
-                                    showCheckmark: false,
-                                    label: Text('${item.$1} ${item.$2}'),
-                                    selectedColor: AppColors.cyan.withValues(
-                                      alpha: .15,
-                                    ),
-                                    side: BorderSide(
-                                      color: selected
-                                          ? AppColors.cyan
-                                          : AppColors.border,
-                                    ),
-                                    onSelected: (value) => setState(() {
-                                      value
-                                          ? _interests.add(item.$2)
-                                          : _interests.remove(item.$2);
-                                    }),
-                                  );
-                                }).toList(),
-                              ),
-                            ),
-                            const SizedBox(height: 18),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: OutlinedButton(
-                                    onPressed: () => Navigator.pop(context),
-                                    style: OutlinedButton.styleFrom(
-                                      minimumSize: const Size.fromHeight(52),
-                                    ),
-                                    child: const Text('Hủy'),
-                                  ),
-                                ),
-                                const SizedBox(width: 12),
-                                Expanded(
-                                  child: FilledButton.icon(
-                                    onPressed: _saving ? null : _save,
-                                    icon: _saving
-                                        ? const SizedBox(
-                                            width: 18,
-                                            height: 18,
-                                            child: CircularProgressIndicator(
-                                              strokeWidth: 2,
-                                              color: Colors.white,
-                                            ),
-                                          )
-                                        : const Icon(Icons.save_outlined),
-                                    label: Text(
-                                      _saving ? 'Đang lưu...' : 'Lưu thay đổi',
-                                    ),
-                                    style: FilledButton.styleFrom(
-                                      minimumSize: const Size.fromHeight(52),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+        content: const Text(
+          'Bạn có thay đổi chưa lưu. Thoát ngay sẽ mất dữ liệu này.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Ở lại'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: FilledButton.styleFrom(
+              backgroundColor: AppColors.orange,
+            ),
+            child: const Text('Thoát'),
+          ),
+        ],
+      ),
+    );
+    return result ?? false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final currentAvatarUrl = _avatarUrl.text.trim();
+    final effectiveAvatarUrl = currentAvatarUrl.isNotEmpty ? currentAvatarUrl : null;
+
+    return PopScope(
+      canPop: !_hasUnsavedChanges,
+      onPopInvokedWithResult: (didPop, _) async {
+        if (didPop) return;
+        final shouldPop = await _onWillPop();
+        if (shouldPop && context.mounted) {
+          Navigator.of(context).pop();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          // Nút back tùy chỉnh: hiển thị dấu chấm đỏ khi có thay đổi chưa lưu
+          leading: AppBackButton(
+            hasBadge: _hasUnsavedChanges,
+            onPressed: () async {
+              final shouldPop = await _onWillPop();
+              if (shouldPop && context.mounted) Navigator.of(context).pop();
+            },
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Chỉnh sửa hồ sơ',
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 17),
+              ),
+              if (_hasUnsavedChanges)
+                const Text(
+                  'Chưa lưu',
+                  style: TextStyle(
+                    color: AppColors.orange,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+            ],
+          ),
+          actions: [
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 200),
+              child: _saving
+                  ? const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                    )
+                  : TextButton.icon(
+                      key: const ValueKey('save_btn'),
+                      onPressed: _hasUnsavedChanges ? _save : null,
+                      icon: const Icon(Icons.save_outlined, size: 18),
+                      label: const Text(
+                        'Lưu',
+                        style: TextStyle(fontWeight: FontWeight.w900),
                       ),
                     ),
-                  ),
-                );
-              },
             ),
-    ),
-  );
+            const SizedBox(width: 8),
+          ],
+        ),
+        body: SafeArea(
+          child: _loading
+              ? const Center(child: CircularProgressIndicator())
+              : _loadError != null
+              ? _ProfileLoadError(onRetry: _loadProfile)
+              : LayoutBuilder(
+                  builder: (context, constraints) {
+                    final wide = constraints.maxWidth >= 800;
+                    return SingleChildScrollView(
+                      padding: EdgeInsets.all(wide ? 28 : 14),
+                      child: Center(
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 820),
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              children: [
+                                _AvatarEditor(
+                                  avatarUrl: effectiveAvatarUrl,
+                                  gender: _gender,
+                                  onTap: () => _message(
+                                    'Chức năng chọn ảnh sẽ kết nối sau.',
+                                  ),
+                                ),
+                                const SizedBox(height: 18),
+                                _EditSection(
+                                  number: '1',
+                                  title: 'Thông tin cơ bản',
+                                  subtitle: 'Tên và username xuất hiện ở mọi nơi trong cộng đồng.',
+                                  child: Column(
+                                    children: [
+                                      _ResponsiveFields(
+                                        wide: wide,
+                                        children: [
+                                          _ProfileField(
+                                            label: 'Tên hiển thị *',
+                                            controller: _name,
+                                            icon: Icons.person_outline_rounded,
+                                            maxLength: 80,
+                                            validator: (value) {
+                                              final length =
+                                                  value?.trim().length ?? 0;
+                                              if (length < 2) {
+                                                return 'Vui lòng nhập tên hiển thị';
+                                              }
+                                              if (length > 80) {
+                                                return 'Tên tối đa 80 ký tự';
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                          _ProfileField(
+                                            label: 'Username',
+                                            controller: _username,
+                                            icon: Icons.alternate_email_rounded,
+                                            maxLength: 30,
+                                            validator: _validateUsername,
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 14),
+                                      _ProfileField(
+                                        label: 'URL ảnh đại diện',
+                                        controller: _avatarUrl,
+                                        icon: Icons.link_rounded,
+                                        hint: 'https://...',
+                                        keyboardType: TextInputType.url,
+                                        onChanged: (_) => setState(() {
+                                          _hasUnsavedChanges = true;
+                                        }),
+                                      ),
+                                      const SizedBox(height: 14),
+                                      _ProfileField(
+                                        label: 'Giới thiệu',
+                                        controller: _bio,
+                                        icon: Icons.notes_rounded,
+                                        maxLines: 4,
+                                        maxLength: 500,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                _EditSection(
+                                  number: '2',
+                                  title: 'Thông tin cá nhân',
+                                  subtitle: 'Địa điểm, giới tính và năm sinh giúp kết nối với thợ săn gần bạn.',
+                                  child: Column(
+                                    children: [
+                                      _ResponsiveFields(
+                                        wide: wide,
+                                        children: [
+                                          _ProfileField(
+                                            label: 'Địa điểm',
+                                            controller: _city,
+                                            icon: Icons.location_on_outlined,
+                                            maxLength: 120,
+                                          ),
+                                          _ProfileField(
+                                            label: 'Năm sinh',
+                                            controller: _birthYear,
+                                            icon: Icons.cake_outlined,
+                                            hint: 'Ví dụ: 1995',
+                                            keyboardType: TextInputType.number,
+                                            validator: _validateBirthYear,
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 14),
+                                      // Chọn giới tính
+                                      _GenderSelector(
+                                        value: _gender,
+                                        onChanged: (value) => setState(() {
+                                          _gender = value;
+                                          _hasUnsavedChanges = true;
+                                        }),
+                                      ),
+                                      const SizedBox(height: 14),
+                                      DropdownButtonFormField<String>(
+                                        initialValue: _visibility,
+                                        isExpanded: true,
+                                        decoration: const InputDecoration(
+                                          labelText: 'Quyền riêng tư hồ sơ',
+                                          prefixIcon: Icon(
+                                            Icons.visibility_outlined,
+                                          ),
+                                        ),
+                                        items: const [
+                                          DropdownMenuItem(
+                                            value: 'public',
+                                            child: Text(
+                                              'Công khai — Mọi người đều có thể xem',
+                                            ),
+                                          ),
+                                          DropdownMenuItem(
+                                            value: 'shared',
+                                            child: Text(
+                                              'Cùng đội — Chỉ người có hoạt động chung',
+                                            ),
+                                          ),
+                                          DropdownMenuItem(
+                                            value: 'private',
+                                            child: Text(
+                                              'Riêng tư — Chỉ mình bạn xem được',
+                                            ),
+                                          ),
+                                        ],
+                                        onChanged: (value) {
+                                          if (value != null) {
+                                            setState(() {
+                                              _visibility = value;
+                                              _hasUnsavedChanges = true;
+                                            });
+                                          }
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                _EditSection(
+                                  number: '3',
+                                  title: 'Sở thích',
+                                  subtitle: 'Chọn sở thích để hiển thị trên hồ sơ của bạn.',
+                                  child: Wrap(
+                                    spacing: 9,
+                                    runSpacing: 9,
+                                    children: _interestOptions.map((item) {
+                                      final selected = _interests.contains(item.$2);
+                                      return FilterChip(
+                                        selected: selected,
+                                        showCheckmark: false,
+                                        label: Text('${item.$1} ${item.$2}'),
+                                        selectedColor: AppColors.cyan.withValues(
+                                          alpha: .15,
+                                        ),
+                                        side: BorderSide(
+                                          color: selected
+                                              ? AppColors.cyan
+                                              : AppColors.border,
+                                        ),
+                                        onSelected: (value) => setState(() {
+                                          value
+                                              ? _interests.add(item.$2)
+                                              : _interests.remove(item.$2);
+                                          _hasUnsavedChanges = true;
+                                        }),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                                const SizedBox(height: 18),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: OutlinedButton(
+                                        onPressed: () async {
+                                          final shouldPop = await _onWillPop();
+                                          if (shouldPop && context.mounted) {
+                                            Navigator.pop(context);
+                                          }
+                                        },
+                                        style: OutlinedButton.styleFrom(
+                                          minimumSize: const Size.fromHeight(52),
+                                        ),
+                                        child: const Text('Hủy'),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: FilledButton.icon(
+                                        onPressed: _saving ? null : _save,
+                                        icon: _saving
+                                            ? const SizedBox(
+                                                width: 18,
+                                                height: 18,
+                                                child: CircularProgressIndicator(
+                                                  strokeWidth: 2,
+                                                  color: Colors.white,
+                                                ),
+                                              )
+                                            : const Icon(Icons.save_outlined),
+                                        label: Text(
+                                          _saving ? 'Đang lưu...' : 'Lưu thay đổi',
+                                        ),
+                                        style: FilledButton.styleFrom(
+                                          minimumSize: const Size.fromHeight(52),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 24),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+        ),
+      ),
+    );
+  }
 
   String? _validateUsername(String? value) {
     final username = value?.trim() ?? '';
@@ -367,8 +485,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
         interests: _interests.toList(),
         birthYear: int.tryParse(_birthYear.text.trim()),
         profileVisibility: _visibility,
+        gender: _gender,
       );
       if (!mounted) return;
+      setState(() => _hasUnsavedChanges = false);
       Navigator.pop(context, true);
     } on PostgrestException catch (error) {
       if (mounted) _message(error.message);
@@ -386,10 +506,118 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 }
 
+
+// ─── Chọn giới tính ──────────────────────────────────────────────────────────
+
+class _GenderSelector extends StatelessWidget {
+  const _GenderSelector({required this.value, required this.onChanged});
+
+  final String value;
+  final ValueChanged<String> onChanged;
+
+  static const _options = [
+    ('male', Icons.male_rounded, '👨 Nam', Color(0xFF4FC3F7)),
+    ('female', Icons.female_rounded, '👩 Nữ', Color(0xFFFF80AB)),
+    ('other', Icons.transgender_rounded, '🌈 Khác', Color(0xFFA5D6A7)),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            const Icon(
+              Icons.wc_outlined,
+              size: 18,
+              color: AppColors.muted,
+            ),
+            const SizedBox(width: 8),
+            const Text(
+              'Giới tính',
+              style: TextStyle(
+                color: AppColors.muted,
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Row(
+          children: _options.map((opt) {
+            final (key, icon, label, color) = opt;
+            final selected = value == key;
+            return Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 180),
+                  decoration: BoxDecoration(
+                    color: selected
+                        ? color.withValues(alpha: .15)
+                        : AppColors.surface,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: selected ? color : AppColors.border,
+                      width: selected ? 1.5 : 1,
+                    ),
+                  ),
+                  child: InkWell(
+                    onTap: () => onChanged(key),
+                    borderRadius: BorderRadius.circular(12),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 4,
+                      ),
+                      child: Column(
+                        children: [
+                          Icon(
+                            icon,
+                            color: selected ? color : AppColors.muted,
+                            size: 26,
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            label,
+                            style: TextStyle(
+                              color: selected ? color : AppColors.muted,
+                              fontSize: 12,
+                              fontWeight: selected
+                                  ? FontWeight.w900
+                                  : FontWeight.w500,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
+    );
+  }
+}
+
+// ─── Avatar Editor ────────────────────────────────────────────────────────────
+
 class _AvatarEditor extends StatelessWidget {
-  const _AvatarEditor({required this.avatarUrl, required this.onTap});
-  final String avatarUrl;
+  const _AvatarEditor({
+    required this.avatarUrl,
+    required this.gender,
+    required this.onTap,
+  });
+
+  final String? avatarUrl;
+  final String gender;
   final VoidCallback onTap;
+
   @override
   Widget build(BuildContext context) => Column(
     children: [
@@ -401,12 +629,11 @@ class _AvatarEditor extends StatelessWidget {
               color: AppColors.orange,
               shape: BoxShape.circle,
             ),
-            child: CircleAvatar(
+            child: UserAvatar(
               radius: 48,
+              avatarUrl: avatarUrl,
+              gender: gender,
               backgroundColor: Colors.white,
-              backgroundImage: avatarUrl.trim().isEmpty
-                  ? const AssetImage(_logo)
-                  : NetworkImage(avatarUrl.trim()),
             ),
           ),
           Positioned(
@@ -425,13 +652,17 @@ class _AvatarEditor extends StatelessWidget {
         ],
       ),
       const SizedBox(height: 10),
-      const Text(
-        'Thay đổi ảnh đại diện',
-        style: TextStyle(color: AppColors.muted),
+      Text(
+        avatarUrl?.isNotEmpty == true
+            ? 'Ảnh từ URL'
+            : 'Ảnh mặc định theo giới tính',
+        style: const TextStyle(color: AppColors.muted, fontSize: 12),
       ),
     ],
   );
 }
+
+// ─── Section wrapper ──────────────────────────────────────────────────────────
 
 class _EditSection extends StatelessWidget {
   const _EditSection({

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'chat_panel.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../notifications/data/notification_repository.dart';
 
@@ -68,7 +69,7 @@ class _HomeRealtimeActionsState extends State<HomeRealtimeActions>
                 tooltip: 'Tin nhắn',
                 icon: Icons.chat_bubble_outline_rounded,
                 unread: unreadMessages,
-                onPressed: () => Navigator.pushNamed(context, '/chat'),
+                onPressed: () => showHomeChatPanel(context),
               ),
             ],
           );

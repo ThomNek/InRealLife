@@ -261,6 +261,24 @@ class _ActivityCardItem extends StatelessWidget {
     final distanceText =
         _formatDistance(activity['distance_km'] ?? activity['distance']);
 
+    final profile = activity['profiles'] as Map<String, dynamic>?;
+    final hostName = (activity['host_name'] as String?) ??
+        (activity['creator_name'] as String?) ??
+        (profile?['display_name'] as String?) ??
+        (profile?['username'] as String?) ??
+        'Thành viên';
+
+    final teamsList = activity['teams'] as List<dynamic>?;
+    final firstTeam = teamsList != null && teamsList.isNotEmpty
+        ? teamsList.first as Map<String, dynamic>?
+        : null;
+    final targetGender = (activity['target_gender'] as String?) ??
+        (firstTeam?['target_gender'] as String?) ??
+        'all';
+    final joinPolicy = (activity['join_policy'] as String?) ??
+        (firstTeam?['join_policy'] as String?) ??
+        'everyone';
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -344,14 +362,37 @@ class _ActivityCardItem extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(height: 10),
+          Wrap(
+            spacing: 6,
+            runSpacing: 4,
+            children: [
+              _FilterTag(label: _genderLabel(targetGender)),
+              _FilterTag(label: _policyLabel(joinPolicy)),
+            ],
+          ),
           const SizedBox(height: 12),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Tạo bởi host',
-                style: TextStyle(color: AppColors.muted, fontSize: 12),
+              const Icon(
+                Icons.person_rounded,
+                size: 14,
+                color: AppColors.muted,
               ),
+              const SizedBox(width: 4),
+              Expanded(
+                child: Text(
+                  'Host: $hostName',
+                  style: const TextStyle(
+                    color: AppColors.muted,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const SizedBox(width: 8),
               OutlinedButton(
                 onPressed: onTap,
                 style: OutlinedButton.styleFrom(
@@ -510,25 +551,25 @@ class _TeamCardItem extends StatelessWidget {
       ),
     );
   }
+}
 
-  String _genderLabel(String gender) {
-    switch (gender) {
-      case 'female_only':
-        return '👩 Chỉ nữ';
-      case 'male_only':
-        return '👨 Chỉ nam';
-      default:
-        return '👥 Nam & Nữ';
-    }
+String _genderLabel(String gender) {
+  switch (gender) {
+    case 'female_only':
+      return '👩 Chỉ nữ';
+    case 'male_only':
+      return '👨 Chỉ nam';
+    default:
+      return '👥 Nam & Nữ';
   }
+}
 
-  String _policyLabel(String policy) {
-    switch (policy) {
-      case 'friends_only':
-        return '🤝 Chỉ bạn bè';
-      default:
-        return '🌐 Mọi người';
-    }
+String _policyLabel(String policy) {
+  switch (policy) {
+    case 'friends_only':
+      return '🤝 Chỉ bạn bè';
+    default:
+      return '🌐 Mọi người';
   }
 }
 

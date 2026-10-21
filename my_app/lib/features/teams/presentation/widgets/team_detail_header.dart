@@ -39,8 +39,13 @@ class TeamDetailHeader extends StatelessWidget {
             '$memberCount/$maxMembers thành viên',
             style: const TextStyle(color: AppColors.cyan, fontWeight: FontWeight.w700),
           ),
-          const SizedBox(height: 10),
-          Text(description, textAlign: TextAlign.center),
+          if (description.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            Text(
+              description,
+              style: const TextStyle(color: Color(0xFFC6CEDF), height: 1.4),
+            ),
+          ],
         ],
       ),
     );

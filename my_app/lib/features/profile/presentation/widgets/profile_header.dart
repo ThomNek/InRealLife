@@ -4,7 +4,6 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/widgets/user_avatar.dart';
 import '../../domain/profile_progress.dart';
 
-const String _logoAsset = 'assets/images/logos/Logo1.png';
 const String _bannerAsset = 'assets/images/banners/AnhSuoi.jpg';
 
 class ProfileHeader extends StatelessWidget {
@@ -60,8 +59,8 @@ class ProfileHeader extends StatelessWidget {
                     ),
                     child: UserAvatar(
                       radius: 43,
-                      fallbackAsset: _logoAsset,
                       avatarUrl: profile?['avatar_url'] as String?,
+                      gender: profile?['gender'] as String?,
                       backgroundColor: Colors.white,
                     ),
                   ),

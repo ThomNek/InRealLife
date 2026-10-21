@@ -1,5 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../domain/notification_model.dart';
+
 class NotificationRepository {
   NotificationRepository({SupabaseClient? client})
       : _client = client ?? _safeClient();
@@ -12,6 +14,12 @@ class NotificationRepository {
     } catch (_) {
       return null;
     }
+  }
+
+  Stream<List<NotificationItem>> watchMineModels() {
+    return watchMine().map(
+      (rows) => rows.map((e) => NotificationItem.fromMap(e)).toList(),
+    );
   }
 
   Stream<List<Map<String, dynamic>>> watchMine() {
@@ -31,20 +39,40 @@ class NotificationRepository {
 
   Future<void> markRead(String notificationId) async {
     final client = _client;
-    if (client == null || client.auth.currentUser == null) {
+    final user = client?.auth.currentUser;
+    if (client == null || user == null) {
       throw const AuthException('Bạn chưa đăng nhập.');
     }
-    await client.rpc(
-      'mark_notification_read',
-      params: {'p_notification_id': notificationId},
-    );
+    try {
+      await client.rpc(
+        'mark_notification_read',
+        params: {'p_notification_id': notificationId},
+      );
+    } catch (_) {
+      // Fallback update trực tiếp nếu RPC chưa có
+      await client
+          .from('notifications')
+          .update({'read_at': DateTime.now().toUtc().toIso8601String()})
+          .eq('id', notificationId)
+          .eq('user_id', user.id);
+    }
   }
 
   Future<void> markAllRead() async {
     final client = _client;
-    if (client == null || client.auth.currentUser == null) {
+    final user = client?.auth.currentUser;
+    if (client == null || user == null) {
       throw const AuthException('Bạn chưa đăng nhập.');
     }
-    await client.rpc('mark_all_notifications_read');
+    try {
+      await client.rpc('mark_all_notifications_read');
+    } catch (_) {
+      // Fallback update trực tiếp nếu RPC chưa có
+      await client
+          .from('notifications')
+          .update({'read_at': DateTime.now().toUtc().toIso8601String()})
+          .eq('user_id', user.id)
+          .isFilter('read_at', null);
+    }
   }
 }
